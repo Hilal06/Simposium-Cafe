@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: {
+    apiKey: "AIzaSyCxjW-4vKAqxLGX4fdqF2xldL-rt7SEJiw",
+    authDomain: "simposium-cafe.firebaseapp.com",
+    databaseURL: "https://simposium-cafe.firebaseio.com",
+    projectId: "simposium-cafe",
+    storageBucket: "simposium-cafe.appspot.com",
+    messagingSenderId: "611737777549",
+    appId: "1:611737777549:web:0f217b86b643a812e479c4",
+    measurementId: "G-9DE5QNPXBR"
+  }
 };
 
 /*
