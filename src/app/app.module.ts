@@ -8,18 +8,26 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './frontend/home/home.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularMaterialModule } from './angular-material.module';
+import { LogInComponent } from './frontend/log-in/log-in.component';
+import { RegisterComponent } from './frontend/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    LogInComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(
       environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    BrowserAnimationsModule,
+    AngularMaterialModule
   ],
   providers: [
     UserService
