@@ -12,6 +12,8 @@ export class MenuComponent implements OnInit {
   menus: any = [];
   qty = 0;
   menu: any;
+  items = new Array();
+  
 
   constructor(private menuService: MenuService) { }
 
@@ -22,6 +24,16 @@ export class MenuComponent implements OnInit {
       }
     )
   }
-  
+  tambahCart(idx){
+    const newItem = {
+      id:this.menu[idx-1].idMenu,
+      nama:this.menu[idx-1].nama,
+      harga: this.menu[idx-1].harga,
+    };
+    this.items.push(newItem);
+  }
+  getTotalCost(){
+    return this.items.map(t => t.harga).reduce((acc, value) => acc + value, 0);
+  }
 
 }
