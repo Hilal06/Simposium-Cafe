@@ -3,8 +3,20 @@
     <mat-tab label = "Pelanggan">
       <mat-card-tittle>Pelanggan</mat-card-tittle>
       <mat-card-content>
-        <form [formGroup] = "pelanggan">
-          
+        <form [formGroup]="pelanggan">
+          <p>
+            <mat-form-field appearance="outline">
+              <input matInput placeholder="Nama" formControlName="nama" required>
+              <mat-hint>Nama Pelanggan Yang akan membeli </mat-hint>
+              <mat-error *ngIf="nama.invalid && nama.touched">
+                Nama Pelanggan Harus di isi !!!
+              </mat-error>
+            </mat-form-field>
+          </p>
+          <div class="button">
+            <button mat-raised-button color="accent" (click)="pesanBaru()" [disabled]="pelanggan.invalid" [routerLink]>Pesan</button>
+          </div>
+          <p>{{ pel }}</p>
         </form>
       </mat-card-content>
     </mat-tab>
