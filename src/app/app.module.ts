@@ -13,6 +13,7 @@ import { AngularMaterialModule } from './angular-material.module';
 import { LogInComponent } from './frontend/log-in/log-in.component';
 import { RegisterComponent } from './frontend/register/register.component';
 import { MenuComponent } from './frontend/menu/menu.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,8 @@ import { MenuComponent } from './frontend/menu/menu.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
