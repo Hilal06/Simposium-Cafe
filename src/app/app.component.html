@@ -1,9 +1,52 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<!-- Toolbar -->
-<mat-toolbar color="primary" class="app-header">
-  <span class="nav-tool-items">
-    <a mat-button routerLink="login" routerLinkActive="active">Log in</a>
-    <a mat-button routerLink="register" routerLinkActive="active">Register</a>
-  </span>
-</mat-toolbar>
-<router-outlet></router-outlet>
+<div class="overall">
+    <div id="wrapper">
+      <app-navbar></app-navbar>
+      <div id="sidebar">
+        <div class="sidebar-header">
+          MENU
+        </div>
+        <!-- Sidebar Links -->
+        <ul class="list-unstyled components">
+          <li>
+            <div class="back-fill black">
+              <a routerLink="home">HOME</a>
+            </div>
+          </li>
+          <li>
+            <div class="back-fill green">
+              <a routerLink="menu">MENU</a>
+            </div>
+          </li>
+          <li>
+            <div class="back-fill red">
+              <a routerLink="about">ABOUT</a>
+            </div>
+          </li>
+          <li>
+            <div class="back-fill blue">
+              <a routerLink="contact">CONTACT</a>
+            </div>
+          </li>
+        </ul>
+        <ul class="list-unstyled CTAs">
+          <li>
+            <a target="_blank" href="" class="article">
+              <i class="fa fa-phone"></i> GIVE US A CALL</a>
+          </li>
+        </ul>
+        <div class="contact">
+          <h3>FOLLOW US:</h3>
+          <a target="_blank" href="" class="social">
+            <i class="fa fa-facebook-square"></i>
+          </a>
+          <a target="_blank" href="" class="social">
+            <i class="fa fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+      <div id="content">
+          <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+  

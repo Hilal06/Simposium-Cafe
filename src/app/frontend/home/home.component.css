@@ -1,0 +1,109 @@
+.background {
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+.overlay {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(39, 39, 39, 0.5);
+    text-align: center;
+}
+
+.greeting {
+    height: 50%;
+    width: 80%;
+    margin: 0 auto;
+    font-family: "Mint Pistachio1";
+    text-align: center;
+    margin-top: 200px;
+    display: inline-block;
+    color: white;
+    text-shadow: 2px 2px 5px #303238;
+}
+
+.greeting h1 {
+    font-size: 10em !important;
+}
+
+.greeting h3 {
+    font-size: 3em !important;
+}
+
+.absolute {
+    margin-bottom: -80px;
+    margin-left: 100px;
+}
+
+.in {
+    margin-top: -40px;
+    margin-bottom: -40px;
+}
+
+@media (max-width: 1050px) {
+    
+    .greeting h1 {
+        font-size: 8em !important;
+    }
+    
+    .greeting h3 {
+        font-size: 2.25em !important;
+    }
+    
+    .absolute {
+        margin-bottom: -60px;
+        margin-left: 80px;
+    }
+    
+    .in {
+        margin-top: -30px;
+        margin-bottom: -50px;
+    }
+}
+
+@media (max-width: 850px) {
+    
+    .greeting h1 {
+        font-size: 6em !important;
+    }
+    
+    .greeting h3 {
+        font-size: 1.5em !important;
+    }
+    
+    .absolute {
+        margin-bottom: -45px;
+        margin-left: 60px;
+    }
+    
+    .in {
+        margin-top: 0px;
+        margin-bottom: -20px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .greeting {
+        margin-top: 300px;
+    }
+    
+    .greeting h1 {
+        font-size: 4em !important;
+    }
+    
+    .greeting h3 {
+        font-size: 1em !important;
+    }
+    
+    .absolute {
+        margin-bottom: -20px;
+        margin-left: 40px;
+    }
+    
+    .in {
+        margin-top: 0px;
+        margin-bottom: -20px;
+    }
+}

@@ -1,68 +1,69 @@
 <div class="header-nav">
-  </div>
-  <div>
-    <div class="row">
-      <div class="column container">
-        <h2>Menu</h2>
-        <div class="rows">
-          <div class="columns" *ngFor="let menu of menus">
-            <mat-card class="cards">
-              <mat-card-title>
-                <h5>{{ menu.nama }}</h5>
-              </mat-card-title>
-              <mat-card-content>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg">
-                <p>
-                  Harga: Rp.{{ menu.harga }}
-                </p>
-              </mat-card-content>
-              <mat-card-actions>
-                <div>
-                  <button mat-raised-button color="primary" (click)="tambahCart(menu.idMenu)">
-                    <mat-icon>add_shopping_cart</mat-icon>
-                  </button>
-                  <button mat-raised-button color="warn" (click)="hapusCart(menu.nama)">
-                    <mat-icon>remove_shopping_cart</mat-icon>
-                  </button>
-                </div>
-              </mat-card-actions>
-            </mat-card>
-          </div>
+  <navbar></navbar>
+</div>
+<div>
+  <div class="row">
+    <div class="column container">
+      <h2>Menu</h2>
+      <div class="rows">
+        <div class="columns" *ngFor="let menu of menus">
+          <mat-card class="cards">
+            <mat-card-title>
+              <h5>{{ menu.nama }}</h5>
+            </mat-card-title>
+            <mat-card-content>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg">
+              <p>
+                Harga: Rp.{{ menu.harga }}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <div>
+                <button mat-raised-button color="primary" (click)="tambahCart(menu.idMenu)">
+                  <mat-icon>add_shopping_cart</mat-icon>
+                </button>
+                <button mat-raised-button color="warn" (click)="hapusCart(menu.nama)">
+                  <mat-icon>remove_shopping_cart</mat-icon>
+                </button>
+              </div>
+            </mat-card-actions>
+          </mat-card>
         </div>
       </div>
-      <div class="column2">
-        <h2>Keranjang</h2>
-        <mat-card>
-          <div class="table-borderless">
-            <table class="table">
-              <thead class="thead-light">
-                <tr>
-                  <th scope="col">Item</th>
-                  <th scope="col">Harga</th>
-                  <th scope="col"></th>
-                </tr>
-              </thead>
-              <tbody *ngFor="let item of items; let i=index">
-                <tr>
-                  <td scope="row">{{ item.nama }}</td>
-                  <td scope="row">{{ item.harga}}</td>
-                  <td scope="row">
-                    <button mat-button color="warn" (click)="hapusItem(i)">
-                      <mat-icon>delete</mat-icon>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-              <tfoot class="thead-light">
-                <td><b>Total</b></td>
-                <td><b>{{getTotalCost()}}</b></td>
-              </tfoot>
-            </table>
-          </div>
+    </div>
+    <div class="column2">
+      <h2>Keranjang</h2>
+      <mat-card>
+        <div class="table-borderless">
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Item</th>
+                <th scope="col">Harga</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let item of items; let i=index">
+              <tr>
+                <td scope="row">{{ item.nama }}</td>
+                <td scope="row">{{ item.harga}}</td>
+                <td scope="row">
+                  <button mat-button color="warn" (click)="hapusItem(i)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot class="thead-light">
+              <td><b>Total</b></td>
+              <td><b>{{getTotalCost()}}</b></td>
+            </tfoot>
+          </table>
+        </div>
         <div>
           <button mat-button color="primary">Pesan</button>
         </div>
-        </mat-card>
-      </div>
+      </mat-card>
     </div>
   </div>
+</div>
