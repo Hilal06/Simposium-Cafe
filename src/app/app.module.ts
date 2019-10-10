@@ -2,7 +2,6 @@ import { UserService } from './service/user.service';
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule,  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './frontend/home/home.component';
@@ -14,6 +13,7 @@ import { LogInComponent } from './frontend/log-in/log-in.component';
 import { RegisterComponent } from './frontend/register/register.component';
 import { MenuComponent } from './frontend/menu/menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatCardModule, MatButtonModule} from '@angular/material'
 
 @NgModule({
   declarations: [
@@ -30,6 +30,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatCardModule, MatButtonModule,
     AngularMaterialModule,
     AngularFireModule.initializeApp(
       environment.firebaseConfig),
