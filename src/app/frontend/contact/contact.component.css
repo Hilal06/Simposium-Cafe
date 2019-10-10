@@ -1,0 +1,64 @@
+.section {
+    height: 100vh;
+    overflow: hidden;
+    margin-top: 0 !important;
+    padding-top: 66px;
+}
+
+#contact-title {
+    background: rgb(41, 29, 151); /* fallback for old browsers */
+    color: #fff;
+    font-size: 4em;
+    box-shadow: 0px 2px 5px #303238;
+    position: fixed;
+    width: 100vw;
+    z-index: 1;
+    margin-left: -125px;
+    transition: margin 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
+}
+
+#contact-title.active {
+    margin-left: 0px;
+}
+
+form {
+    margin-top: 150px;
+}
+
+input,
+textarea {
+    width: 60%;
+    margin: 10px auto 10px auto;
+    border-radius: 2px;
+    border: 1px solid #ddd;
+    resize: none;
+    padding: 5px;
+}
+
+textarea {
+    height: 200px;
+}
+
+input[type="submit"] {
+    background: transparent;
+    border: 3px solid rgb(41, 29, 151);
+    transition: 0.5s all;
+    cursor: pointer;
+    color: rgb(41, 29, 151);
+}
+
+input[type="submit"]:hover {
+    background: rgb(41, 29, 151);
+    color: white;
+}
+
+@media (max-width: 768px) {
+    #contact-title {
+        margin-left: 0;
+    }
+    
+    input,
+    textarea {
+        width: 75%;
+    }
+}

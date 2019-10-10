@@ -14,6 +14,9 @@ import { LogInComponent } from './frontend/log-in/log-in.component';
 import { RegisterComponent } from './frontend/register/register.component';
 import { MenuComponent } from './frontend/menu/menu.component';
 import { NavbarComponent } from './frontend/navbar/navbar.component';
+import { AboutComponent } from './frontend/about/about.component';
+import { ContactComponent } from './frontend/contact/contact.component';
+import { ContactFormComponent } from './frontend/contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,9 @@ import { NavbarComponent } from './frontend/navbar/navbar.component';
     RegisterComponent,
     MenuComponent,
     NavbarComponent,
+    AboutComponent,
+    ContactComponent,
+    ContactFormComponent,
 
   ],
   imports: [

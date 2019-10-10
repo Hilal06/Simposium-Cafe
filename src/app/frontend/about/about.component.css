@@ -1,0 +1,60 @@
+#about-title {
+    background: rgb(151, 29, 29);
+    color: #fff;
+    font-size: 4em;
+    box-shadow: 0px 2px 5px #303238;
+    position: sticky;
+    width: 100vw;
+    padding-top: 100px;
+    margin-left: -125px;
+    text-align: center;
+    transition: margin 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
+}
+
+#about-title.active {
+    margin-left: 0px;
+}
+
+.parallax {
+    text-align: center;
+    height: 100vh;
+    padding-top: 200px;
+}
+
+.parallax-overlay{
+    margin: 0 auto;
+    width: 80%;
+    background: #fff;
+    padding: 20px;
+}
+
+.about {
+    text-align: left;
+    text-indent: 20px;
+    font-size: 1.3em;
+}
+
+button {
+    width: 100%;
+    border: 2px solid #303238;
+    background: transparent;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #303238;
+    color: #fff;
+}
+
+@media (max-width: 520px) {
+    .parallax-overlay {
+        width: 320px;
+    }
+}
+
+@media (max-width: 768px) {
+    #about-title {
+        margin-left: 0px;
+    }
+}
