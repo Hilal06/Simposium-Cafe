@@ -1,14 +1,28 @@
-.center {
-    margin: auto;
-    width: 60%;
-    border: 3px solid #73AD21;
-    padding: 10px;
-  }
+:host {
+  display: flex;
+  justify-content: center;
+  margin: 100px 0px;
+}
 
-  .parent {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
 
-  }
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.error {
+  padding: 16px;
+  width: 300px;
+  color: white;
+  background-color: red;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+}

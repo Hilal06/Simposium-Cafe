@@ -6,7 +6,9 @@ import { MenuComponent } from './frontend/menu/menu.component';
 import { HomeComponent } from "./frontend/home/home.component";
 
 
+
 const routes: Routes = [
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component:LogInComponent},
   {path: 'register', component:RegisterComponent},
   {path: 'menu', component:MenuComponent},

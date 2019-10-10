@@ -27,6 +27,8 @@ import { NavbarComponent } from './frontend/navbar/navbar.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
