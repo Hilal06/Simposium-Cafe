@@ -1,6 +1,4 @@
-export interface Menu{
-    id: any,
-    nama: any,
-    gambar: any,
-    harga:number
-}
+export class Menu{
+    nama: any;
+    harga:number;
+};

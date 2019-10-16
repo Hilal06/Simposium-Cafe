@@ -1,14 +1,19 @@
+import { Menu } from './../model/menu';
 import { create } from 'domain';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { reject } from 'bluebird';
+import { reject, resolve } from 'bluebird';
+import { AngularFireList, AngularFireDatabase } from '@angular/fire/database';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenuService {
 
-  constructor(private firestore: AngularFirestore) { }
+
+  constructor(private firestore: AngularFirestore) { 
+  }
   createMenu(data) {
     return new Promise<any> ((resolve, reject) => {
       this.firestore.collection("Menu")
@@ -17,8 +22,8 @@ export class MenuService {
     });
   }
 
-  getMenu() {
-    return this.firestore.collection("Menu").snapshotChanges();
+  getMenu(){
+    return this.firestore.collection('Menu').snapshotChanges();
   }
   updateMenu(data) {
     return this.firestore.collection("Menu")
