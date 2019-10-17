@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './frontend/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularMaterialModule } from './angular-material.module';
+import { MaterialModule } from './material';
 import { LogInComponent } from './frontend/log-in/log-in.component';
 import { RegisterComponent } from './frontend/register/register.component';
 import { MenuComponent } from './frontend/menu/menu.component';
@@ -39,7 +39,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    AngularMaterialModule,
+    MaterialModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
   ],
