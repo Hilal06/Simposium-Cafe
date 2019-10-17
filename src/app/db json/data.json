@@ -1,0 +1,19 @@
+{
+    "Menu" : {
+        "1" : {
+            "nama" : "Kentang Goreng",
+            "harga" : 12000
+        },
+        "2" : {
+            "nama" : "Roti Bakar",
+            "harga" : 15000
+        }
+    },
+    "Kasir" : {
+        "1" : {
+            "nama" : "Paul",
+            "username" : "paul",
+            "password" : "paul"
+        }
+    }
+}

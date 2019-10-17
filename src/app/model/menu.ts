@@ -1,4 +1,5 @@
-export class Menu{
-    nama: any;
-    harga:number;
+export interface Menu {
+    id: any;
+    Nama: any;
+    harga: number;
 };

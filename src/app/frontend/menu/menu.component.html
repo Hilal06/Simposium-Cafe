@@ -8,10 +8,10 @@
       <div class="rows">
         <div class="columns" *ngFor="let menu of menus">
           <mat-card class="cards">
-            <mat-card-title>
-              <h5>{{ menu.nama }}</h5>
+            <mat-card-title id="nama">
+              <h5>{{ menu.Nama }}</h5>
             </mat-card-title>
-            <mat-card-content>
+            <mat-card-content id="harga">
               <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg">
               <p>
                 Harga: Rp.{{ menu.harga }}
@@ -19,12 +19,12 @@
             </mat-card-content>
             <mat-card-actions>
               <div>
-                <button mat-raised-button color="primary" (click)="tambahCart(menu.idMenu)">
+                <button mat-raised-button color="primary" (click)="tambahCart(menu)">
                   <mat-icon>add_shopping_cart</mat-icon>
                 </button>
-                <button mat-raised-button color="warn" (click)="hapusCart(menu.nama)">
+                <!-- <button mat-raised-button color="warn" (click)="hapusCart(menu)">
                   <mat-icon>remove_shopping_cart</mat-icon>
-                </button>
+                </button> -->
               </div>
             </mat-card-actions>
           </mat-card>
@@ -45,7 +45,7 @@
             </thead>
             <tbody *ngFor="let item of items; let i=index">
               <tr>
-                <td scope="row">{{ item.nama }}</td>
+                <td scope="row">{{ item.Nama }}</td>
                 <td scope="row">{{ item.harga}}</td>
                 <td scope="row">
                   <button mat-button color="warn" (click)="hapusItem(i)">

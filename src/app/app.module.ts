@@ -1,3 +1,4 @@
+import { AngularFireModule } from '@angular/fire';
 import { UserService } from './service/user.service';
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
@@ -6,8 +7,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './frontend/home/home.component';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material.module';
 import { LogInComponent } from './frontend/log-in/log-in.component';
@@ -17,6 +16,7 @@ import { NavbarComponent } from './frontend/navbar/navbar.component';
 import { AboutComponent } from './frontend/about/about.component';
 import { ContactComponent } from './frontend/contact/contact.component';
 import { ContactFormComponent } from './frontend/contact-form/contact-form.component';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -40,10 +40,8 @@ import { ContactFormComponent } from './frontend/contact-form/contact-form.compo
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    AngularFireModule.initializeApp(
-      environment.firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    
   ],
   schemas:[
     CUSTOM_ELEMENTS_SCHEMA,
