@@ -1,7 +1,7 @@
 import { Menu } from './../model/menu';
 import { create } from 'domain';
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore  } from '@angular/fire/firestore';
 import { reject, resolve } from 'bluebird';
 import { AngularFireList, AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
@@ -35,5 +35,4 @@ export class MenuService {
     return this.firestore.collection("Menu")
     .doc(data.payload.doc.id).delete();
   }
-
 }
