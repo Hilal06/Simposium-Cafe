@@ -9,7 +9,7 @@ import { resolve, reject } from 'bluebird';
 export class KasirService {
 
   constructor(private firestore : AngularFirestore) { }
-  createKasir(data){
+  createKasir(data){  
     return new Promise<any>((resolve, reject) => {
       this.firestore.collection("Kasir")
       .add(data)

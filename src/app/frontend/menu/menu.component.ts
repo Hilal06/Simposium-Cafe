@@ -31,7 +31,9 @@ export class MenuComponent implements OnInit {
     this.items.push(menu);
   }
   hapusItem(i) {
-    console.log(i);
+    console.log(this.items);
+    this.items.slice(i, 1);
+    console.log(this.items);
   }
   getTotalCost() {
     return this.items.map(t => t.harga).reduce((acc, value) => acc + value, 0);
