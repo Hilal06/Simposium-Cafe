@@ -11,7 +11,7 @@ import { ContactFormComponent } from './frontend/contact-form/contact-form.compo
 
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component:LogInComponent},
   {path: 'register', component:RegisterComponent},
   {path: 'menu', component:MenuComponent},

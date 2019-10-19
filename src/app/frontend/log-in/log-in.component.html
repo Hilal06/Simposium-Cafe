@@ -1,77 +1,42 @@
 <mat-card>
   <mat-tab-group>
-    <mat-tab label="Pelanggan">
+    <mat-tab label = "Pelanggan">
       <mat-card-title>Pelanggan</mat-card-title>
       <mat-card-content>
-        <form [formGroup]="pelanggan">
+        <form [formGroup] = "pelanggan">
           <p>
-            <mat-form-field appearance="outline">
-              <input matInput placeholder="Nama" formControlName="nama" required>
-              <mat-hint>Nama Pelanggan Yang akan membeli </mat-hint>
-              <mat-error *ngIf="nama.invalid && nama.touched">
-                Nama Pelanggan Harus di isi !!!
-              </mat-error>
+            <mat-form-field>
+             <input matInput placeholder="Nama" formControlName="nama" required>
+             <mat-hint>Masukkan Nama Anda</mat-hint>
+             <mat-error *ngIf="pelanggan.invalid">
+               Isi nama Anda terlebih dahulu
+             </mat-error>
             </mat-form-field>
           </p>
           <div class="button">
-            <button mat-raised-button color="accent" (click)="pesanBaru()" [disabled]="pelanggan.invalid" [routerLink]>Pesan</button>
+            <button mat-raised-button color="accent" [disabled]="pelanggan.invalid"[routerLink]>Pesan</button>
           </div>
-          <p>{{ pel }}</p>
         </form>
       </mat-card-content>
     </mat-tab>
     <mat-tab label="Kasir">
-      <mat-card-title>Kasir</mat-card-title>
+      <mat-card-title>Login Kasir Disini</mat-card-title>
       <mat-card-content>
-        <form (ngSubmit)="loginKasir()" [formGroup]="kasir">
+        <form [formGroup]="kasir">
           <p>
-            <mat-form-field appearance="outline">
-              <input type="text" matInput placeholder="Username" formControlName="username" id="username">
-              <mat-error *ngIf="username.invalid && username.touched">
-                username harus di isi !
-              </mat-error>
+            <mat-form-field appereance="outline">
+              <input matInput placeholder="Username Anda" formControlName="username">
+              <mat-error *ngIf="kasir.invalid">Username wajib diisi</mat-error>
             </mat-form-field>
           </p>
           <p>
-            <mat-form-field appearance="outline">
-              <input [type]="hide ? 'password' : 'text' " matInput placeholder="Password" formControlName="password"
-                id="password">
-              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-form-field>
+              <input id="inipassword" type="password" matInput placeholder="Password" matInput showHideInput>
+              <mat-icon matSuffix class="material-icons" showHideTrigger="inipassword" 
+              [showHideStatus]="{ materialIcon: true, id: 'inipassword' }"></mat-icon>
+              
             </mat-form-field>
           </p>
-          <p *ngIf="error" class="error">
-            {{ error }}
-          </p>
-          <div class="button">
-            <button type="submit" mat-raised-button color="primary" [disabled]="kasir.invalid" [routerLink]>Login</button>
-          </div>
-        </form>
-      </mat-card-content>
-    </mat-tab>
-    <mat-tab label="Admin">
-      <mat-card-title>Koki</mat-card-title>
-      <mat-card-content>
-        <form [formGroup]="admin">
-          <p>
-            <mat-form-field appearance="outline">
-              <input matInput placeholder="username" formControlName="user" required>
-              <mat-error *ngIf="user.invalid && user.touched">
-                Username Harus di isi !!!
-              </mat-error>
-            </mat-form-field>
-          </p>
-          <p>
-            <mat-form-field appearance="outline">
-              <input matInput placeholder="password" formControlName="pass" [type]="hide ? 'password' : 'text' " required>
-              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-              <mat-error *ngIf="pass.invalid && pass.touched">
-                Password Harus di isi !!!
-              </mat-error>
-            </mat-form-field>
-          </p>
-          <div class="button">
-            <button mat-raised-button color="accent" (click)="loginAdmin()" [disabled]="admin.invalid" [routerLink]>login</button>
-          </div>
         </form>
       </mat-card-content>
     </mat-tab>

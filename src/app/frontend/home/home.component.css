@@ -2,6 +2,7 @@
     height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
+    background-image: url(../../../assets/simposium.PNG);
     overflow: hidden;
 }
 .overlay {
