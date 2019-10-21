@@ -36,7 +36,6 @@ import { ShowHidePasswordModule } from 'ngx-show-hide-password';
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

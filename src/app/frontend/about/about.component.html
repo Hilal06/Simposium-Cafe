@@ -1,6 +1,37 @@
-<div class="section">
-  <div class="parallax">
-    <div class="parallax-overlay">
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <form [formGroup]="MenuForm">
+          <mat-form-field>
+              <input matInput placeholder="Nama" formControlName="name">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Harga" formControlName="harga">
+            </mat-form-field>
+            <button mat-button (click)="saveMenu()">
+              <mat-icon>save_alt</mat-icon>
+            </button>
+      </form>
+    </div>
+    <div class="col-8">
+      <table mat-table #table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="Nama">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nama </th>
+          <td mat-cell *matCellDef="let row"> {{row.Nama}} </td>
+        </ng-container>
+        <ng-container matColumnDef="harga">
+          <th mat-header-cell *matHeaderCellDef> Harga </th>
+          <td mat-cell *matCellDef="let row"> {{row.harga}} </td>
+        </ng-container>
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef> </th>
+          <td mat-cell *matCellDef="let row"> 
+            <button mat-button>hapus</button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columsDisplay"></tr>
+        <tr mat-row *matRowDef="let row; columns: columsDisplay;"></tr>
+      </table>
     </div>
   </div>
 </div>

@@ -14,7 +14,7 @@ export class MenuService {
     return this.firestore.collection('Menu').snapshotChanges();
   }
 
-  addMenus(menu) {
+  addMenu(menu) {
     this.firestore.collection('Menu').add(menu);
   }
 }
