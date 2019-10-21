@@ -34,7 +34,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
