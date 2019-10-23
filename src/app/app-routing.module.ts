@@ -7,6 +7,7 @@ import { HomeComponent } from "./frontend/home/home.component";
 import { AboutComponent } from './frontend/about/about.component';
 import { ContactComponent } from './frontend/contact/contact.component';
 import { ContactFormComponent } from './frontend/contact-form/contact-form.component';
+import { NavbarComponent } from "./frontend/navbar/navbar.component";
 
 
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'menu', component:MenuComponent},
   {path: 'home', component:HomeComponent},
   {path: 'about', component:AboutComponent},
+  {path: 'navbar', component:NavbarComponent},
   {path: 'contact-form', component:ContactFormComponent}
 ];
 

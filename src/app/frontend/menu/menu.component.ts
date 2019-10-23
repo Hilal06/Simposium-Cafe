@@ -36,6 +36,8 @@ export class MenuComponent implements OnInit {
     console.log(this.items);
   }
   getTotalCost() {
-    return this.items.map(t => t.harga).reduce((acc, value) => acc + value, 0);
+    var total = this.items.map(t => t.harga);
+    var jumlah = total.reduce((acc, value) => acc + value, 0);
+    return jumlah
   }
 }

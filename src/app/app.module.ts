@@ -17,7 +17,6 @@ import { AboutComponent } from './frontend/about/about.component';
 import { ContactComponent } from './frontend/contact/contact.component';
 import { ContactFormComponent } from './frontend/contact-form/contact-form.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,6 @@ import { ShowHidePasswordModule } from 'ngx-show-hide-password';
     NavbarComponent,
     AboutComponent,
     ContactComponent,
-    ShowHidePasswordModule,
     ContactFormComponent,
 
   ],
