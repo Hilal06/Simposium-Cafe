@@ -1,6 +1,6 @@
 export interface Kasir {
     id: any,
-    name: any,
+    nama: any,
     username: any,
     password: any,
 }

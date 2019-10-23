@@ -7,8 +7,8 @@ import { HomeComponent } from "./frontend/home/home.component";
 import { AboutComponent } from './frontend/about/about.component';
 import { ContactComponent } from './frontend/contact/contact.component';
 import { ContactFormComponent } from './frontend/contact-form/contact-form.component';
-
-
+import { AdminKasirComponent } from "./frontend/admin-kasir/admin-kasir.component";
+import { AdminComponent } from "./frontend/admin/admin.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -17,7 +17,9 @@ const routes: Routes = [
   {path: 'menu', component:MenuComponent},
   {path: 'home', component:HomeComponent},
   {path: 'about', component:AboutComponent},
-  {path: 'contact-form', component:ContactFormComponent}
+  {path: 'contact-form', component:ContactFormComponent},
+  {path: 'admin-kasir', component:AdminKasirComponent},
+  {path: 'admin', component:AdminComponent}
 ];
 
 @NgModule({

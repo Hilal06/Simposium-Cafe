@@ -17,6 +17,9 @@ import { AboutComponent } from './frontend/about/about.component';
 import { ContactComponent } from './frontend/contact/contact.component';
 import { ContactFormComponent } from './frontend/contact-form/contact-form.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AdminKasirComponent } from './frontend/admin-kasir/admin-kasir.component';
+import { AdminComponent } from './frontend/admin/admin.component';
+import { CryptoService } from "../app/service/crypto.service";
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     AboutComponent,
     ContactComponent,
     ContactFormComponent,
+    AdminKasirComponent,
+    AdminComponent,
+
 
   ],
   imports: [
@@ -47,7 +53,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     NO_ERRORS_SCHEMA
   ],
   providers: [
-    UserService
+    UserService,
+    CryptoService
   ],
   bootstrap: [AppComponent]
 })
