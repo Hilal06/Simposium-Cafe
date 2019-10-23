@@ -2,8 +2,27 @@
     height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
-    overflow: hidden;
+    background-image: url(../../../assets/simposium.PNG);
 }
+
+.mat-button {
+    background-color: rgba(11, 196, 196, 0.562);
+    color: rgb(255, 255, 255);
+}
+
+.top-right-corner {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+}
+
+.side-login {
+    position: absolute;
+    top: 10px;
+    right: 100px;
+}
+
 .overlay {
     height: 100%;
     width: 100%;

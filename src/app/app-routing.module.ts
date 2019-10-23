@@ -11,7 +11,7 @@ import { AdminKasirComponent } from "./frontend/admin-kasir/admin-kasir.componen
 import { AdminComponent } from "./frontend/admin/admin.component";
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component:LogInComponent},
   {path: 'register', component:RegisterComponent},
   {path: 'menu', component:MenuComponent},
