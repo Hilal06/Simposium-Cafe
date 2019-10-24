@@ -20,6 +20,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AdminKasirComponent } from './frontend/admin-kasir/admin-kasir.component';
 import { AdminComponent } from './frontend/admin/admin.component';
 import { CryptoService } from "../app/service/crypto.service";
+import { AdminMenuComponent } from './frontend/admin-menu/admin-menu.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { CryptoService } from "../app/service/crypto.service";
     ContactFormComponent,
     AdminKasirComponent,
     AdminComponent,
+    AdminMenuComponent,
 
 
   ],
