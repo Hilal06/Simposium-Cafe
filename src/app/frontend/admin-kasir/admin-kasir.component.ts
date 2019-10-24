@@ -13,7 +13,7 @@ import { CryptoService } from "./../../service/crypto.service";
 export class AdminKasirComponent implements OnInit {
   tmp: Kasir[];
   kasirr = new Array<Kasir>();
-  columsDisplay: string[] = ['nama', 'username','password'];
+  columsDisplay: string[] = ['nama', 'username', 'password'];
   dataSource = new MatTableDataSource<Kasir>();
   
   @ViewChild(MatSort) sort: MatSort;

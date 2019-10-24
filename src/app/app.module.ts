@@ -35,7 +35,11 @@ import { AdminMenuComponent } from './frontend/admin-menu/admin-menu.component';
     ContactFormComponent,
     AdminKasirComponent,
     AdminComponent,
+<<<<<<< HEAD
     AdminMenuComponent,
+=======
+    AdminKokiComponent,
+>>>>>>> c8c9e7c0800e8bee04b74df466888dcac7672dcf
 
 
   ],
