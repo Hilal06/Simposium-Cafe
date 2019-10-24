@@ -32,4 +32,8 @@ export class KokiService {
     return this.firestore.collection("Koki")
     .doc(data.payload.doc.id).delete();
   }
+
+  addKoki(Koki) {
+    this.firestore.collection('Koki').add(Koki);
+  }
 }

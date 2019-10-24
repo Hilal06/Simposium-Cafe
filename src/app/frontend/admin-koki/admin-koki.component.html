@@ -1,0 +1,26 @@
+<form [formGroup]="kokiForm">
+  <mat-form-field>
+    <input matInput placeholder="Nama Anda" formControlName="nama">
+  </mat-form-field>
+  <p></p>
+  <mat-form-field>
+    <input matInput placeholder="Username" formControlName="username">
+  </mat-form-field>
+  <p></p>
+  <mat-form-field>
+    <input matInput placeholder="Passoword" formControlName="password">
+  </mat-form-field>
+  <p></p>
+  <button mat-button (click)="saveKoki()">
+    <mat-icon>save_alt</mat-icon>
+  </button>
+</form>
+
+<mat-table [dataSource]="dataSource">
+  <ng-container matColumnDef="nama">
+    <th mat-header-cell *matHeaderCellDef>Nama</th>
+    <td mat-cell *matCellDef = "let row">{{row.nama}}</td>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
