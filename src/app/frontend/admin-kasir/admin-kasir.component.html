@@ -51,7 +51,9 @@
       </form>
     </div>
     <div class="col-8">
-        
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+          </mat-form-field>
       <table mat-table #table [dataSource]="dataSource" matsort>
         <ng-container matColumnDef="nama">
           <th mat-header-cell *matHeaderCellDef> Nama </th>
@@ -74,6 +76,7 @@
           <tr mat-header-row *matHeaderRowDef="columsDisplay"></tr>
           <tr mat-row *matRowDef="let row; columns: columsDisplay;"></tr>
       </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
     </div>
   </div>
 </div>
