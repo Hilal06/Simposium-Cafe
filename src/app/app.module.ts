@@ -21,6 +21,7 @@ import { AdminKasirComponent } from './frontend/admin-kasir/admin-kasir.componen
 import { AdminComponent } from './frontend/admin/admin.component';
 import { CryptoService } from "../app/service/crypto.service";
 import { AdminMenuComponent } from './frontend/admin-menu/admin-menu.component';
+import { AdminKokiComponent } from "./frontend/admin-koki/admin-koki.component";
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { AdminMenuComponent } from './frontend/admin-menu/admin-menu.component';
     AdminKasirComponent,
     AdminComponent,
     AdminMenuComponent,
+    AdminKokiComponent
 
 
   ],

@@ -30,7 +30,9 @@
           <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef> </th>
             <td mat-cell *matCellDef="let row"> 
-              <button mat-button>hapus</button>
+              <button mat-button (click)="hapusMenu(row)">
+                <mat-icon>delete</mat-icon>
+              </button>
             </td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="columsDisplay"></tr>
