@@ -1,5 +1,5 @@
 export interface Menu {
-    key: any,
-    Nama: any,
-    harga: number,
+    id: any;
+    Nama: any;
+    harga: number;
 };

@@ -20,7 +20,7 @@ export class MenuComponent implements OnInit {
     this.menuService.getMenus().subscribe( res => {
       this.menus = res.map( item => {
         return {
-          'key': item.payload.doc.id,
+          'id': item.payload.doc.id,
           ...item.payload.doc.data()
         } as Menu;
       });
