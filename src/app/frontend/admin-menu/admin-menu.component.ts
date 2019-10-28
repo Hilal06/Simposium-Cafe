@@ -13,7 +13,7 @@ import { CryptoService } from "./../../service/crypto.service";
 export class AdminMenuComponent implements OnInit {
   tmp: Menu[];
   menus = new Array<Menu>();
-  columsDisplay: string[] = ['Nama', 'harga'];
+  columsDisplay: string[] = ['Nama', 'harga', 'action'];
   dataSource = new MatTableDataSource<Menu>();
 
   @ViewChild(MatSort) sort: MatSort;
@@ -31,7 +31,7 @@ export class AdminMenuComponent implements OnInit {
     this.menuService.getMenus().subscribe(res => {
       this.tmp = res.map( item => {
         return {
-          id: item.payload.doc.id,
+          'key': item.payload.doc.id,
           ...item.payload.doc.data()
         } as Menu;
       });
@@ -47,7 +47,7 @@ export class AdminMenuComponent implements OnInit {
   saveMenu() {
     const Nama = this.MenuForm.get('name').value;
     const harga = this.MenuForm.get('harga').value;
-    let menu: Menu = {'id': 1, 'Nama': Nama, 'harga':harga};
+    let menu: Menu = {'key': '1', 'Nama': Nama, 'harga':harga};
     this.menuService.addMenu(menu);
     this.dataSource = new MatTableDataSource<Menu>(this.menus);
     this.dataSource.sort = this.sort;
@@ -59,4 +59,8 @@ export class AdminMenuComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+  hapusMenu(menu: Menu){
+    this.menuService.deleteMenu(menu);
+  }
+
 }

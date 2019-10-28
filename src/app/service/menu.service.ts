@@ -17,4 +17,8 @@ export class MenuService {
   addMenu(menu) {
     this.firestore.collection('Menu').add(menu);
   }
+
+  deleteMenu(menu) {
+    this.firestore.collection('Menu').doc(menu.key).delete();
+  }
 }
