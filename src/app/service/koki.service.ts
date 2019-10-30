@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { promise } from 'protractor';
+import { Koki } from "./../model/koki";
 import { resolve, reject } from 'bluebird';
 
 @Injectable({
@@ -14,10 +15,11 @@ export class KokiService {
     return this.firestore.collection('Koki').snapshotChanges();
   }
 
-  addKoki(Koki) {
-    this.firestore.collection('Koki').add(Koki);
+  addKoki(koki) {
+    delete koki.id;
+    this.firestore.collection('Koki').add(koki);
   }
-  dropKoki(Koki){
-    this.firestore.collection('Kasir').doc('id' + Koki ).delete
+  dropKoki(koki: Koki){
+    this.firestore.collection('Koki').doc(koki.id).delete();
   }
 }

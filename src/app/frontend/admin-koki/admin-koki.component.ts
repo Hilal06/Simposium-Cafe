@@ -14,7 +14,7 @@ import { CryptoService } from 'src/app/service/crypto.service';
 export class AdminKokiComponent implements OnInit {
   tmp             : Koki[];
   KokiArray       = new Array<Koki>();
-  columnsDisplay  : string[] = ['nama', 'username', 'password'];
+  columnsDisplay  : string[] = ['nama', 'username', 'password', 'action'];
   dataSource      = new MatTableDataSource<Koki>();
 
   @ViewChild(MatSort) sort: MatSort;
@@ -33,10 +33,9 @@ export class AdminKokiComponent implements OnInit {
       this.tmp = res.map(item => {
         return {
 
-          'key'  : item.payload.doc.id, ...item.payload.doc.data()
+          'id'  : item.payload.doc.id, ...item.payload.doc.data()
         } as Koki;
       });
-      console.log(this.tmp);
       this.KokiArray  = this.tmp;
       this.dataSource = new MatTableDataSource<Koki>(this.KokiArray);
       this.dataSource.sort = this.sort;
@@ -49,7 +48,7 @@ export class AdminKokiComponent implements OnInit {
     const nama      = this.kokiForm.get('nama').value;
     const username  = this.kokiForm.get('username').value;
     const password  = this.EncrDecr.set(username, this.kokiForm.get('password').value);
-    let iniKoki     : Koki = {'key': null, 'id' : 1, 'nama' : nama, 'username' : username, 'password' : password};
+    let iniKoki     : Koki = {'id': null, 'nama' : nama, 'username' : username, 'password' : password};
     this.KokiService.addKoki(iniKoki);
     this.dataSource = new MatTableDataSource<Koki>(this.KokiArray);
     this.dataSource.sort = this.sort;
@@ -60,5 +59,9 @@ export class AdminKokiComponent implements OnInit {
     if(this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  hapusKoki(Koki: Koki) {
+    this.KokiService.dropKoki(Koki);
   }
 }
