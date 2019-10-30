@@ -4,7 +4,6 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { MatSort } from '@angular/material/sort';
-import { CryptoService } from "./../../service/crypto.service";
 @Component({
   selector: 'app-admin-menu',
   templateUrl: './admin-menu.component.html',
@@ -24,30 +23,27 @@ export class AdminMenuComponent implements OnInit {
     harga: new FormControl(''),
   });
 
-  constructor(private menuService: MenuService, private EncrDecr: CryptoService) { }
+  constructor(private menuService: MenuService) { }
 
   ngOnInit() {
-    
     this.menuService.getMenus().subscribe(res => {
       this.tmp = res.map( item => {
         return {
-          'key': item.payload.doc.id,
+          'id': item.payload.doc.id,
           ...item.payload.doc.data()
         } as Menu;
       });
+      console.log(this.tmp);
       this.menus = this.tmp;
       this.dataSource = new MatTableDataSource<Menu>(this.menus);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     });
-    
-    // this.menus.push({'id':0, 'Nama': 'Rifaul', 'harga': 1000});
-    
   }
   saveMenu() {
     const Nama = this.MenuForm.get('name').value;
     const harga = this.MenuForm.get('harga').value;
-    let menu: Menu = {'key': '1', 'Nama': Nama, 'harga':harga};
+    let menu: Menu = {'id': null, 'Nama': Nama, 'harga':harga};
     this.menuService.addMenu(menu);
     this.dataSource = new MatTableDataSource<Menu>(this.menus);
     this.dataSource.sort = this.sort;
@@ -59,8 +55,7 @@ export class AdminMenuComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-  hapusMenu(menu: Menu){
+  hapusMenu(menu: Menu) {
     this.menuService.deleteMenu(menu);
   }
-
 }

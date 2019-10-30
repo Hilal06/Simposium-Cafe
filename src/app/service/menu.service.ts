@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Menu } from '../model/menu';
+import { database } from 'firebase';
 
 
 @Injectable({
@@ -15,10 +17,11 @@ export class MenuService {
   }
 
   addMenu(menu) {
+    delete menu.id;
     this.firestore.collection('Menu').add(menu);
   }
 
-  deleteMenu(menu) {
-    this.firestore.collection('Menu').doc(menu.key).delete();
+  deleteMenu(menu: Menu) {
+    this.firestore.collection('Menu').doc(menu.id).delete();
   }
 }

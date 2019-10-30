@@ -11,16 +11,15 @@ import { Key } from 'protractor';
 export class KasirService {
 
   constructor(private firestore : AngularFirestore) { }
-  getKasir() 
-  {
+  getKasir() {
     return this.firestore.collection('Kasir').snapshotChanges();
   }
 
   addKasir(Kasir) {
     this.firestore.collection('Kasir').add(Kasir);
   }
-  dropKasir(Kasir){
-    this.firestore.collection('Kasir').doc('id' + Kasir).delete
+  dropKasir(kasir: Kasir){
+    this.firestore.collection('Kasir').doc(kasir.key).delete();
   }
 
 }

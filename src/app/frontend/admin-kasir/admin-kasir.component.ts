@@ -26,10 +26,7 @@ export class AdminKasirComponent implements OnInit {
   });
   constructor(private KasirService: KasirService, private EncrDecr: CryptoService) { }
 
-  ngOnInit() {  
-    
-    
-    
+  ngOnInit() {
     this.KasirService.getKasir().subscribe(res => {
     this.tmp = res.map( item => {
       return {
@@ -37,7 +34,6 @@ export class AdminKasirComponent implements OnInit {
         ...item.payload.doc.data()
       } as Kasir;
     });
-    console.log(this.tmp);
     this.kasirr = this.tmp;
     this.dataSource = new MatTableDataSource<Kasir>(this.kasirr);
     this.dataSource.sort = this.sort;
@@ -48,13 +44,12 @@ export class AdminKasirComponent implements OnInit {
     const nama = this.kasirForm.get('nama').value;
     const username = this.kasirForm.get('username').value;
     const password = this.EncrDecr.set(username, this.kasirForm.get('password').value);
-    let iniKasir: Kasir = {'key': null, 'id': 1, 'nama': nama, 'username': username, 'password': password};
+    let iniKasir: Kasir = {'key': '', 'nama': nama, 'username': username, 'password': password};
     this.KasirService.addKasir(iniKasir);
     this.dataSource = new MatTableDataSource<Kasir>(this.kasirr);
     this.dataSource.sort = this.sort;
   }
   deleteKasir(id: string){
-    this.KasirService.dropKasir(id);
   }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
