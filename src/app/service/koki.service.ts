@@ -17,7 +17,7 @@ export class KokiService {
   addKoki(Koki) {
     this.firestore.collection('Koki').add(Koki);
   }
-  dropKasir(Koki){
-    this.firestore.collection('Kasir').doc('id' ).delete
+  dropKoki(Koki){
+    this.firestore.collection('Kasir').doc('id' + Koki ).delete
   }
 }

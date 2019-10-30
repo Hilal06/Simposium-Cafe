@@ -2,6 +2,7 @@
 import{ MenuService } from "./../../service/menu.service";
 import{ Menu } from "./../../model/menu"
 import { Component, OnInit } from '@angular/core';
+import { splitClasses } from '@angular/compiler';
 
 @Component({
   selector: 'app-menu',
@@ -31,13 +32,12 @@ export class MenuComponent implements OnInit {
     this.items.push(menu);
   }
   hapusItem(i) {
-    console.log(this.items);
-    this.items.slice(i, 1);
-    console.log(this.items);
+    var index = this.items.indexOf(i);
+    this.items.splice(index, 1);
+    
   }
   getTotalCost() {
-    var total = this.items.map(t => t.harga);
-    var jumlah = total.reduce((acc, value) => acc + value, 0);
-    return jumlah
+    return this.items.map(t => +t.harga).reduce((acc, value) => acc + value, 0);
+    
   }
 }

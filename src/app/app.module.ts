@@ -22,7 +22,6 @@ import { AdminComponent } from './frontend/admin/admin.component';
 import { CryptoService } from "../app/service/crypto.service";
 import { AdminKokiComponent } from "./frontend/admin-koki/admin-koki.component";
 import { AdminMenuComponent } from './frontend/admin-menu/admin-menu.component';
-import { AdminKokiComponent } from "./frontend/admin-koki/admin-koki.component";
 
 @NgModule({
   declarations: [
