@@ -16,10 +16,11 @@ export class KasirService {
   }
 
   addKasir(Kasir) {
+    delete Kasir.id;
     this.firestore.collection('Kasir').add(Kasir);
   }
   dropKasir(kasir: Kasir){
-    this.firestore.collection('Kasir').doc(kasir.key).delete();
+    this.firestore.collection('Kasir').doc(kasir.id).delete();
   }
 
 }
