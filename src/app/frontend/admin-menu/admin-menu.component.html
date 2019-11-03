@@ -8,6 +8,21 @@
               <mat-form-field>
                 <input matInput placeholder="Harga" formControlName="harga">
               </mat-form-field>
+              <div>
+                <div *ngIf="afterTouch">
+                    <div class="alert alert-success" role="alert" *ngIf="statusUpload">
+                        Upload Success!
+                    </div>
+                    <div class="alert alert-danger" role="alert" *ngIf="!statusUpload">
+                        Upload Failed!
+                    </div>
+                </div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" (change)="image($event)">
+                    <label class="custom-file-label" for="inputGroupFile01">{{ chooseFile }}</label>
+                </div>
+                  <button (click)="upload()">UPLOAD</button>
+              </div>
               <button mat-button (click)="saveMenu()">
                 <mat-icon>save_alt</mat-icon>
                 <mat-label>Tambah</mat-label>
