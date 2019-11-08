@@ -1,9 +1,10 @@
 import { FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Menu } from './../../model/menu';
+import { Transaksi } from './../../model/Transaksi';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { MatSort } from '@angular/material/sort';
-import { MenuService } from 'src/app/service/menu.service';
+import { TransaksiService } from 'src/app/sevice/transaksi.service';
+import { Kasir } from 'src/app/model/Kasir';
 
 @Component({
   selector: 'app-kasir',
@@ -11,32 +12,24 @@ import { MenuService } from 'src/app/service/menu.service';
   styleUrls: ['./kasir.component.css']
 })
 export class KasirComponent implements OnInit {
-  tmp: Menu[];
-  menus = new Array<Menu>();
-  columsDisplay: string[] = ['Nama', 'harga', 'action'];
-  dataSource = new MatTableDataSource<Menu>();
+  tmp: Transaksi[];
+  transaksii = new Array<Transaksi>();
+  columsDisplay: string[] = [];
+  dataSource = new MatTableDataSource<Transaksi>();
 
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  MenuForm = new FormGroup({
-    name: new FormControl(''),
-    harga: new FormControl(''),
-  });
-  constructor(private menuService: MenuService) { }
+  constructor(private TransaksiService: TransaksiService) { }
    
-  ngOnInit() {this.menuService.getMenus().subscribe(res => {
+  ngOnInit() {this.TransaksiService.getTransaksi().subscribe(res => {
       this.tmp = res.map( item => {
         return {
           'id': item.payload.doc.id,
           ...item.payload.doc.data()
-        } as Menu;
+        } as Transaksi;
       });
       console.log(this.tmp);
-      this.menus = this.tmp;
-      this.dataSource = new MatTableDataSource<Menu>(this.menus);
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
+      this.transaksii = this.tmp;
+      this.dataSource = new MatTableDataSource<Transaksi>(this.transaksii);
+
     });
   }
 }
