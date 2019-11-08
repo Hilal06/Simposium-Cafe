@@ -35,13 +35,14 @@
     <div class="column container">
       <h2>Menu</h2>
       <div class="rows">
-        <div class="columns" *ngFor="let menu of menus">
+        <div class="columns" *ngFor="let menu of menus; let i=index">
           <mat-card class="cards">
             <mat-card-title id="nama">
               <h5>{{ menu.Nama }}</h5>
             </mat-card-title>
             <mat-card-content id="harga">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg">
+              <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"> -->
+              <img src="{{menu.image}}" alt="">
               <p>
                 Harga: Rp.{{ menu.harga }}
               </p>
@@ -90,7 +91,7 @@
           </table>
         </div>
         <div>
-          <button mat-button color="primary">Pesan</button>
+          <button mat-button color="primary" (click)="pesan()">Pesan</button>
         </div>
       </mat-card>
     </div>
