@@ -1,3 +1,4 @@
+import { KasirComponent} from './frontend/kasir/kasir.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire';
 import { UserService } from './service/user.service';

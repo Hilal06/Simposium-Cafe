@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Menu } from '../model/menu';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { FirebaseApp } from '@angular/fire';
+import * as firebase from 'firebase';
 
 
 @Injectable({
@@ -20,11 +21,20 @@ export class MenuService {
 
   addMenu(menu) {
     delete menu.id;
-    this.firestore.collection('Menu').add(menu);
+    this.firestore.collection('Menu').add(menu).then(res => {
+      console.log('query add success');
+    }).catch(err => {
+      console.log('failed to add :: ' + err);
+    });
   }
 
   deleteMenu(menu: Menu) {
-    this.firestore.collection('Menu').doc(menu.id).delete();
+    this.deleteImage(menu.image);
+    this.firestore.collection('Menu').doc(menu.id).delete().then(res => {
+      console.log('Delete record success');
+    }).catch(err => {
+      console.log('Error deleting record! ::' + err);
+    });
   }
   async uploadImage(file: File) {
     console.log('please wait');
@@ -35,6 +45,14 @@ export class MenuService {
     } else {
       console.log('Upload Failed');
     }
+  }
+  async deleteImage(doc) {
+    const docRef = firebase.storage().refFromURL(doc);
+    docRef.delete().then(res => {
+      console.log('Delete Success!');
+    }).catch(error => {
+      console.log( 'Image delete failed! :: ' + error);
+    });
   }
   // private async getUrl(snap: firebase.storage.UploadTaskSnapshot) {
   //   return await snap.ref.getDownloadURL();

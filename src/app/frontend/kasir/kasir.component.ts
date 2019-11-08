@@ -1,10 +1,9 @@
-import { FormGroup, FormControl } from '@angular/forms';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Kasir } from './../../model/Kasir';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { Transaksi } from './../../model/Transaksi';
-import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatBottomSheetRef, MatBottomSheet } from '@angular/material';
 import { MatSort } from '@angular/material/sort';
 import { TransaksiService } from 'src/app/sevice/transaksi.service';
-import { Kasir } from 'src/app/model/Kasir';
 
 @Component({
   selector: 'app-kasir',
@@ -13,23 +12,29 @@ import { Kasir } from 'src/app/model/Kasir';
 })
 export class KasirComponent implements OnInit {
   tmp: Transaksi[];
-  transaksii = new Array<Transaksi>();
-  columsDisplay: string[] = [];
+  listTransaksi = new Array<Transaksi>();
+  columsDisplay: string[] = ['id', 'kasir', 'tanggal', 'total', 'detail'];
   dataSource = new MatTableDataSource<Transaksi>();
 
-  constructor(private TransaksiService: TransaksiService) { }
-   
-  ngOnInit() {this.TransaksiService.getTransaksi().subscribe(res => {
+  constructor(private transaksiService: TransaksiService, private _bottomSheet: MatBottomSheet) { }
+
+  ngOnInit() {this.transaksiService.getTransaksi().subscribe(res => {
       this.tmp = res.map( item => {
         return {
           'id': item.payload.doc.id,
           ...item.payload.doc.data()
         } as Transaksi;
       });
-      console.log(this.tmp);
-      this.transaksii = this.tmp;
-      this.dataSource = new MatTableDataSource<Transaksi>(this.transaksii);
-
+      this.listTransaksi = this.tmp;
+      this.dataSource = new MatTableDataSource<Transaksi>(this.listTransaksi);
     });
+  }
+
+  showDetailMenu(record) {
+    console.log(record);
+  }
+
+  getKasirName(kasir: Kasir) {
+    return kasir.nama;
   }
 }

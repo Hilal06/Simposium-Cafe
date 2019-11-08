@@ -1,3 +1,4 @@
+import { KasirComponent } from './frontend/kasir/kasir.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LogInComponent } from './frontend/log-in/log-in.component';
@@ -14,15 +15,16 @@ import { AuthGuard } from './frontend/guars/auth.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
-  {path: 'login', component:LogInComponent},
-  {path: 'register', component:RegisterComponent},
-  {path: 'menu', component:MenuComponent},
-  {path: 'home', component:HomeComponent},
-  {path: 'about', component:AboutComponent},
-  {path: 'contact-form', component:ContactFormComponent},
-  {path: 'admin-kasir', component:AdminKasirComponent},
+  {path: 'login', component: LogInComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: 'menu', component: MenuComponent},
+  {path: 'home', component: HomeComponent},
+  {path: 'about', component: AboutComponent},
+  {path: 'kasir', component: KasirComponent},
+  {path: 'contact-form', component: ContactFormComponent},
+  {path: 'admin-kasir', component: AdminKasirComponent},
   {path: 'admin-koki', component: AdminKokiComponent},
-  {path: 'admin', component:AdminComponent, canActivate : [AuthGuard]}
+  {path: 'admin', component: AdminComponent, canActivate : [AuthGuard]}
 ];
 
 @NgModule({

@@ -2,8 +2,8 @@ import { Menu } from './menu';
 import { Kasir } from './Kasir';
 export interface Transaksi {
     id: any;
-    kasir: Kasir[];
-    Menu: Menu[];
-    tanggal: Date;
+    kasir: Kasir;
+    menu: Menu[];
+    tanggal: any;
     total: number;
 }
