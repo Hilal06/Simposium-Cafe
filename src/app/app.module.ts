@@ -1,3 +1,4 @@
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire';
 import { UserService } from './service/user.service';
 import { environment } from './../environments/environment';
@@ -22,7 +23,7 @@ import { AdminComponent } from './frontend/admin/admin.component';
 import { CryptoService } from "../app/service/crypto.service";
 import { AdminKokiComponent } from "./frontend/admin-koki/admin-koki.component";
 import { AdminMenuComponent } from './frontend/admin-menu/admin-menu.component';
-import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth';
+import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from "./frontend/guars/auth.guard";
 
 @NgModule({
@@ -41,9 +42,9 @@ import { AuthGuard } from "./frontend/guars/auth.guard";
     AdminComponent,
     AdminMenuComponent,
     AdminKokiComponent
-
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     FormsModule,
     AppRoutingModule,
@@ -53,7 +54,7 @@ import { AuthGuard } from "./frontend/guars/auth.guard";
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    AngularFireAuthModule,
+    AngularFireStorageModule,
   ],
   schemas:[
     CUSTOM_ELEMENTS_SCHEMA,

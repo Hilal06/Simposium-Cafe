@@ -10,10 +10,17 @@ import { MatSort } from '@angular/material/sort';
   styleUrls: ['./admin-menu.component.css']
 })
 export class AdminMenuComponent implements OnInit {
+  // variable
   tmp: Menu[];
   menus = new Array<Menu>();
   columsDisplay: string[] = ['Nama', 'harga', 'action'];
   dataSource = new MatTableDataSource<Menu>();
+
+  chooseFile = 'Choose File';
+  img: File;
+  statusUpload = false;
+  afterTouch = false;
+  url;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -43,10 +50,15 @@ export class AdminMenuComponent implements OnInit {
   saveMenu() {
     const Nama = this.MenuForm.get('name').value;
     const harga = this.MenuForm.get('harga').value;
-    let menu: Menu = {'id': null, 'Nama': Nama, 'harga':harga};
-    this.menuService.addMenu(menu);
-    this.dataSource = new MatTableDataSource<Menu>(this.menus);
-    this.dataSource.sort = this.sort;
+    if (Nama !== '' && harga !== '') {
+      let menu: Menu = {'id': null, 'Nama': Nama, 'harga':harga, 'image':this.url};
+      this.menuService.addMenu(menu);
+      this.dataSource = new MatTableDataSource<Menu>(this.menus);
+      this.dataSource.sort = this.sort;
+      this.clearForm();
+    } else {
+      console.log('Failed Input');
+    }
   }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -57,5 +69,31 @@ export class AdminMenuComponent implements OnInit {
   }
   hapusMenu(menu: Menu) {
     this.menuService.deleteMenu(menu);
+  }
+  clearForm() {
+    this.MenuForm.get('name').setValue('');
+    this.MenuForm.get('harga').setValue('');
+    this.afterTouch = false;
+    this.img = null;
+  }
+  image(event) {
+    const file = event.target.files.item(0);
+    this.img = file;
+    this.chooseFile = this.img.name;
+  }
+  upload() {
+    const file: File = this.img;
+    this.menuService.uploadImage(file).then(res => {
+      this.showImage(res);
+    });
+  }
+  async showImage(url: firebase.storage.UploadTaskSnapshot) {
+    this.afterTouch = true;
+    try {
+      this.statusUpload = true;
+      this.url = await url.ref.getDownloadURL();
+    } catch (error) {
+      this.statusUpload = false;
+    }
   }
 }
