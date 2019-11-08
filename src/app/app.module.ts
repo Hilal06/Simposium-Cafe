@@ -1,3 +1,4 @@
+import { KasirComponent} from './frontend/kasir/kasir.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire';
 import { UserService } from './service/user.service';
@@ -41,7 +42,8 @@ import { AuthGuard } from "./frontend/guars/auth.guard";
     AdminKasirComponent,
     AdminComponent,
     AdminMenuComponent,
-    AdminKokiComponent
+    AdminKokiComponent,
+    KasirComponent,
   ],
   imports: [
     HttpClientModule,

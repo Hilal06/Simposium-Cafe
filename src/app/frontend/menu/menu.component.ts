@@ -1,9 +1,9 @@
-
+import { TransaksiService } from 'src/app/sevice/transaksi.service';
+import { Transaksi } from './../../model/Transaksi';
 import{ MenuService } from "./../../service/menu.service";
 import{ Menu } from "./../../model/menu"
 import { Component, OnInit } from '@angular/core';
-import * as firebase from 'firebase';
-import { Console } from '@angular/core/src/console';
+import { Kasir } from 'src/app/model/Kasir';
 
 @Component({
   selector: 'app-menu',
@@ -16,7 +16,7 @@ export class MenuComponent implements OnInit {
   menu: any;
   items = new Array();
 
-  constructor(private menuService: MenuService) { }
+  constructor(private menuService: MenuService, private transaksiService: TransaksiService) { }
 
   ngOnInit() {
     this.menuService.getMenus().subscribe( res => {
@@ -33,14 +33,21 @@ export class MenuComponent implements OnInit {
     this.items.push(menu);
   }
   hapusItem(i) {;
-    var index = this.items.indexOf(i);
+    let index = this.items.indexOf(i);
     this.items.splice(index, 1);
   }
   getTotalCost() {
     return this.items.map(t => +t.harga).reduce((acc, value) => acc + value, 0);
   }
   pesan() {
+    const date = new Date();
     const menuOrder = this.items;
-    console.log(menuOrder);
+    const kasir: Kasir = {'id': 123, 'nama': 'Test Name', 'username': 'Test', 'password': 'test'};
+    if (menuOrder.length === 0) {
+      console.log('data empty');
+    } else {
+      const transaksi: Transaksi = {'id': '1', 'menu': menuOrder, 'kasir': kasir, 'tanggal':date, 'total': this.getTotalCost()};
+      this.transaksiService.addTransaksi(transaksi);
+    }
   }
 }
