@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
-<div class=" container">
-  <mat-tab-group>
+<div class=" container" routerLinkActive="active">
+  Selamat Datang, {{id}}
+  <mat-tab-group routerLink="/admin">
     <mat-tab label="Kasir">
       <app-admin-kasir></app-admin-kasir>
     </mat-tab>
@@ -12,4 +13,7 @@
     </mat-tab>
   </mat-tab-group>
 </div>
-
+<div class="col-md-6 col-md-offset-3 loginBox">    
+    Selamat Datang,  {{id}}    
+    <a href="javascript:void(0);" (click)="logout()">Logout</a>    
+</div>   

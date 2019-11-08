@@ -40,5 +40,27 @@
         </form>
       </mat-card-content>
     </mat-tab>
+    <mat-tab label="Admin" routerLinkActive="active" routerLink="/login">
+      <mat-card-title>Apabila Anda Admin, Silahkan Login</mat-card-title>
+      <mat-card-content>
+        <form [formGroup] = "admin" (ngSubmit)="login()">
+          <p>
+            <mat-form-field appereance="outline">
+                <input matInput placeholder="Username Anda" formControlName="userid">
+                <mat-error *ngIf="admin.invalid">Username wajib diisi</mat-error>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field>
+              <input type="password" matInput placeholder="Password" formControlName="password">
+              <mat-error *ngIf="admin.invalid && admin.touched">Password wajib diisi</mat-error>
+            </mat-form-field>
+          </p>
+          <div class="button">
+              <button mat-raised-button color="accent" [disabled]="admin.invalid" routerLink = '/admin'>Masuk</button>
+            </div>
+        </form>
+      </mat-card-content>
+    </mat-tab>
   </mat-tab-group>
 </mat-card>

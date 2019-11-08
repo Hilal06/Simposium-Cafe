@@ -10,6 +10,7 @@ import { ContactFormComponent } from './frontend/contact-form/contact-form.compo
 import { AdminKasirComponent } from "./frontend/admin-kasir/admin-kasir.component";
 import { AdminComponent } from "./frontend/admin/admin.component";
 import { AdminKokiComponent } from "./frontend/admin-koki/admin-koki.component";
+import { AuthGuard } from './frontend/guars/auth.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -21,7 +22,7 @@ const routes: Routes = [
   {path: 'contact-form', component:ContactFormComponent},
   {path: 'admin-kasir', component:AdminKasirComponent},
   {path: 'admin-koki', component: AdminKokiComponent},
-  {path: 'admin', component:AdminComponent}
+  {path: 'admin', component:AdminComponent, canActivate : [AuthGuard]}
 ];
 
 @NgModule({

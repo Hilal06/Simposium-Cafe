@@ -22,6 +22,8 @@ import { AdminComponent } from './frontend/admin/admin.component';
 import { CryptoService } from "../app/service/crypto.service";
 import { AdminKokiComponent } from "./frontend/admin-koki/admin-koki.component";
 import { AdminMenuComponent } from './frontend/admin-menu/admin-menu.component';
+import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth';
+import { AuthGuard } from "./frontend/guars/auth.guard";
 
 @NgModule({
   declarations: [
@@ -40,7 +42,6 @@ import { AdminMenuComponent } from './frontend/admin-menu/admin-menu.component';
     AdminMenuComponent,
     AdminKokiComponent
 
-
   ],
   imports: [
     BrowserModule,
@@ -52,6 +53,7 @@ import { AdminMenuComponent } from './frontend/admin-menu/admin-menu.component';
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    AngularFireAuthModule,
   ],
   schemas:[
     CUSTOM_ELEMENTS_SCHEMA,
@@ -59,7 +61,8 @@ import { AdminMenuComponent } from './frontend/admin-menu/admin-menu.component';
   ],
   providers: [
     UserService,
-    CryptoService
+    CryptoService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
