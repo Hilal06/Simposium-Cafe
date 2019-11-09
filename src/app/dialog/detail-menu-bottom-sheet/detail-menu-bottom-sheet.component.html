@@ -1,3 +1,11 @@
-<p>
-  detail-menu-bottom-sheet works!
-</p>
+<div class="container-fluid">
+  <h3>Detail Menu</h3>
+  <mat-nav-list>
+    <a mat-list-item *ngFor="let menu of menus; let i=index">
+      <span mat-line> {{menu.Nama}} </span>
+      <span mat-line> Rp.{{menu.harga}} </span>
+    </a>
+  </mat-nav-list>
+  <Strong>Total Harga : Rp.{{total}}</Strong>
+</div>
+

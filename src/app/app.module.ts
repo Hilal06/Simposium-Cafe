@@ -44,7 +44,8 @@ import { DetailMenuBottomSheetComponent } from './dialog/detail-menu-bottom-shee
     AdminComponent,
     AdminMenuComponent,
     AdminKokiComponent,
-    DetailMenuBottomSheetComponent
+    KasirComponent,
+    DetailMenuBottomSheetComponent,
   ],
   imports: [
     HttpClientModule,
@@ -58,6 +59,9 @@ import { DetailMenuBottomSheetComponent } from './dialog/detail-menu-bottom-shee
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireStorageModule,
+  ],
+  entryComponents:[
+    DetailMenuBottomSheetComponent,
   ],
   schemas:[
     CUSTOM_ELEMENTS_SCHEMA,

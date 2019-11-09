@@ -32,21 +32,23 @@ export class MenuComponent implements OnInit {
   tambahCart(menu) {
     this.items.push(menu);
   }
-  hapusItem(i) {;
-    let index = this.items.indexOf(i);
+  hapusItem(i) {
+    const index = this.items.indexOf(i);
     this.items.splice(index, 1);
   }
   getTotalCost() {
     return this.items.map(t => +t.harga).reduce((acc, value) => acc + value, 0);
   }
   pesan() {
-    const date = new Date();
+    // nama pelanggan set with session name pelanggan from login pelanggan
+    const pelanggan = 'Name Here';
     const menuOrder = this.items;
     const kasir: Kasir = {'id': 123, 'nama': 'Test Name', 'username': 'Test', 'password': 'test'};
     if (menuOrder.length === 0) {
       console.log('data empty');
     } else {
-      const transaksi: Transaksi = {'id': '1', 'menu': menuOrder, 'kasir': kasir, 'tanggal':date, 'total': this.getTotalCost()};
+      // tslint:disable-next-line: max-line-length
+      const transaksi: Transaksi = {'id': '1', 'pelanggan': pelanggan ,'menu': menuOrder, 'kasir': kasir, 'tanggal':null, 'total': this.getTotalCost()};
       this.transaksiService.addTransaksi(transaksi);
     }
   }
