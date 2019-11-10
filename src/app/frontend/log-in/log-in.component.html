@@ -37,6 +37,7 @@
               
             </mat-form-field>
           </p>
+          
         </form>
       </mat-card-content>
     </mat-tab>
@@ -56,7 +57,7 @@
               <mat-error *ngIf="admin.invalid && admin.touched">Password wajib diisi</mat-error>
             </mat-form-field>
           </p>
-          <div class="button">
+          <div class="button" routerLink='admin'>
               <button mat-raised-button color="accent" [disabled]="admin.invalid" routerLink = '/admin'>Masuk</button>
             </div>
         </form>

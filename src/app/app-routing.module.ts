@@ -12,9 +12,10 @@ import { AdminKasirComponent } from "./frontend/admin-kasir/admin-kasir.componen
 import { AdminComponent } from "./frontend/admin/admin.component";
 import { AdminKokiComponent } from "./frontend/admin-koki/admin-koki.component";
 import { AuthGuard } from './frontend/guars/auth.guard';
+import { KokiComponent } from './frontend/koki/koki.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'login', component: LogInComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'menu', component: MenuComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'contact-form', component: ContactFormComponent},
   {path: 'admin-kasir', component: AdminKasirComponent},
   {path: 'admin-koki', component: AdminKokiComponent},
-  {path: 'admin', component: AdminComponent, canActivate : [AuthGuard]}
+  {path: 'admin', component: AdminComponent, canActivate : [AuthGuard]},
+  {path: 'koki', component:KokiComponent}
 ];
 
 @NgModule({
