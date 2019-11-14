@@ -27,7 +27,6 @@ import { AdminMenuComponent } from './frontend/admin-menu/admin-menu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from "./frontend/guars/auth.guard";
 import { DetailMenuBottomSheetComponent } from './dialog/detail-menu-bottom-sheet/detail-menu-bottom-sheet.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +43,8 @@ import { DetailMenuBottomSheetComponent } from './dialog/detail-menu-bottom-shee
     AdminComponent,
     AdminMenuComponent,
     AdminKokiComponent,
-    DetailMenuBottomSheetComponent
+    DetailMenuBottomSheetComponent,
+    KasirComponent
   ],
   imports: [
     HttpClientModule,
