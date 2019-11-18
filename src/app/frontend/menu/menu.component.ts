@@ -4,6 +4,7 @@ import{ MenuService } from "./../../service/menu.service";
 import{ Menu } from "./../../model/menu"
 import { Component, OnInit } from '@angular/core';
 import { Kasir } from 'src/app/model/Kasir';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-menu',
@@ -16,7 +17,7 @@ export class MenuComponent implements OnInit {
   menu: any;
   items = new Array();
 
-  constructor(private menuService: MenuService, private transaksiService: TransaksiService) { }
+  constructor(private menuService: MenuService, private transaksiService: TransaksiService,public snackBar: MatSnackBar ) { }
 
   ngOnInit() {
     this.menuService.getMenus().subscribe( res => {
@@ -39,7 +40,10 @@ export class MenuComponent implements OnInit {
   getTotalCost() {
     return this.items.map(t => +t.harga).reduce((acc, value) => acc + value, 0);
   }
-  pesan() {
+  pesan(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 5000,
+   });
     // nama pelanggan set with session name pelanggan from login pelanggan
     const pelanggan = 'Name Here';
     const menuOrder = this.items;

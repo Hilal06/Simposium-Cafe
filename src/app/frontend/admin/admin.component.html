@@ -1,6 +1,26 @@
-<app-navbar></app-navbar>
+<mat-toolbar color="primary" class="app-toolbar">
+    <mat-toolbar-row>
+        <button mat-button routerLink='/home'>
+            <mat-icon>home</mat-icon>
+            <span>Simposium </span>
+          </button>
+      <span class="spacer"></span>
+      <span class="col-md-3 col-md-offset-3 loginBox">  
+          <img src="../../../assets/admin.jpg" alt="Avatar" class="avatar">  
+          Selamat Datang  {{id}}       
+      </span>   
+      <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink='/home'>
+          <mat-icon>close</mat-icon>
+          <a href="javascript:void(0);" (click)="logout()">Logout</a>  
+        </button>
+      </mat-menu>   
+    </mat-toolbar-row>
+  </mat-toolbar>
 <div class=" container" routerLinkActive="active">
-  Selamat Datang, {{id}}
   <mat-tab-group routerLink="/admin">
     <mat-tab label="Kasir">
       <app-admin-kasir></app-admin-kasir>
@@ -13,7 +33,3 @@
     </mat-tab>
   </mat-tab-group>
 </div>
-<div class="col-md-6 col-md-offset-3 loginBox">    
-    Selamat Datang,  {{id}}    
-    <a href="javascript:void(0);" (click)="logout()">Logout</a>    
-</div>   
