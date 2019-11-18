@@ -20,14 +20,14 @@ export class KasirComponent implements OnInit {
 
   constructor(private transaksiService: TransaksiService, private bottomSheet: MatBottomSheet) { }
 
-  ngOnInit() {this.transaksiService.getTransaksi().subscribe(res => {
+  ngOnInit() {
+    this.transaksiService.getTransaksi().subscribe(res => {
       this.tmp = res.map( item => {
         return {
           'id': item.payload.doc.id,
           ...item.payload.doc.data()
         } as Transaksi;
       });
-      console.log(this.tmp);
       this.listTransaksi = this.tmp;
       this.dataSource = new MatTableDataSource<Transaksi>(this.listTransaksi);
     });

@@ -41,7 +41,9 @@ export class LogInComponent implements OnInit {
   //   password : new FormControl('', [Validators.required])
   // });
 
-  dataPelanggan: any = [];
+  dataPelanggan = new FormGroup({
+    nama: new FormControl('', [Validators.required])
+  });
 
   constructor(private formBuilder : FormBuilder, private router : Router, private authService : AuthService) { }
   ngOnInit() {
@@ -70,5 +72,8 @@ export class LogInComponent implements OnInit {
         this.message = "Cek kembali user dan password Anda";
       }
     }
+  }
+  orderPelanggan() {
+    localStorage.setItem('Pelanggan', this.pelanggan.get('nama').value);
   }
 }

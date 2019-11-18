@@ -10,8 +10,15 @@ export class TransaksiService {
 
   constructor(private firestore: AngularFirestore) { }
   getTransaksi() {
+    this.sortData();
     return this.firestore.collection('Transaksi').snapshotChanges();
   }
+  sortData() {
+    const data = firebase.firestore().collection('Transaksi').limit(3).orderBy('tanggal', 'desc').onSnapshot( res => {
+      console.log(res.docChanges());
+    });
+  }
+
   addTransaksi(record: Transaksi) {
     delete record.id;
     record.tanggal = firebase.firestore.FieldValue.serverTimestamp();
