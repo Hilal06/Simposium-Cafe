@@ -7,6 +7,9 @@ import { TransaksiService } from 'src/app/sevice/transaksi.service';
 import { DetailMenuBottomSheetComponent } from 'src/app/dialog/detail-menu-bottom-sheet/detail-menu-bottom-sheet.component';
 import { Timestamp } from 'rxjs';
 import { Menu } from 'src/app/model/menu';
+import { NgComponentOutlet } from '@angular/common';
+import { element } from '@angular/core/src/render3';
+import { mkdirSync } from 'fs';
 @Component({
   selector: 'app-koki',
   templateUrl: './koki.component.html',
@@ -39,7 +42,15 @@ export class KokiComponent implements OnInit {
   search(event: string) {
     this.dataSource.filter = event.trim().toLowerCase();
   }
-  getmenu(menu: Menu) {
-    return menu.Nama;
+  getmenu(menu: Menu[]) {
+    let mk = '';
+    menu.forEach(element => {
+      if (mk === '') {
+        mk = mk + element.Nama;
+      } else {
+        mk = mk + ', ' + element.Nama
+      }
+    })
+    return mk;
   }
 }

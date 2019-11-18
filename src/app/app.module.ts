@@ -27,11 +27,8 @@ import { AdminMenuComponent } from './frontend/admin-menu/admin-menu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from "./frontend/guars/auth.guard";
 import { DetailMenuBottomSheetComponent } from './dialog/detail-menu-bottom-sheet/detail-menu-bottom-sheet.component';
-<<<<<<< HEAD
-=======
 import { KokiComponent } from './frontend/koki/koki.component';
 
->>>>>>> b386306e70dd7265badbeb7108a30ed828ef567a
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,14 +45,9 @@ import { KokiComponent } from './frontend/koki/koki.component';
     AdminComponent,
     AdminMenuComponent,
     AdminKokiComponent,
-<<<<<<< HEAD
-    DetailMenuBottomSheetComponent,
-    KasirComponent
-=======
     KasirComponent,
     DetailMenuBottomSheetComponent,
     KokiComponent,
->>>>>>> b386306e70dd7265badbeb7108a30ed828ef567a
   ],
   imports: [
     HttpClientModule,
