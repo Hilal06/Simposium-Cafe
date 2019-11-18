@@ -45,9 +45,9 @@ export class MenuComponent implements OnInit {
       duration: 5000,
    });
     // nama pelanggan set with session name pelanggan from login pelanggan
-    const pelanggan = 'Name Here';
+    const pelanggan = localStorage.getItem('Pelanggan');
     const menuOrder = this.items;
-    const kasir: Kasir = {'id': 123, 'nama': 'Test Name', 'username': 'Test', 'password': 'test'};
+    const kasir: Kasir = {'id': 123, 'nama': 'test Name', 'username': 'Test', 'password': 'test'};
     if (menuOrder.length === 0) {
       console.log('data empty');
     } else {
