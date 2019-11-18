@@ -1,0 +1,22 @@
+<div class="container">
+    <mat-form-field>
+        <input matInput (keyup)="search($event.target.value)" placeholder="Search">
+    </mat-form-field>   
+    <p></p>
+    <table mat-table #table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> #No </th>
+        <td mat-cell *matCellDef="let index = index"> {{index}} </td>
+      </ng-container>
+      <ng-container matColumnDef="menu">
+        <th mat-header-cell *matHeaderCellDef> Menu </th>
+        <td mat-cell *matCellDef="let row"> {{getmenu(row.menu)}} </td>
+      </ng-container>
+      <ng-container matColumnDef="tanggal">
+        <th mat-header-cell *matHeaderCellDef> Tanggal </th>
+        <td mat-cell *matCellDef="let row"> {{ getDateOnly(row.tanggal) }} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="columsDisplay"></tr>
+      <tr mat-row *matRowDef="let row; columns: columsDisplay;"></tr>
+    </table>
+  </div>
