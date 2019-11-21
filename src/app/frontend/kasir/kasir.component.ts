@@ -5,7 +5,6 @@ import { MatTableDataSource, MatPaginator, MatBottomSheet} from '@angular/materi
 import { MatSort } from '@angular/material/sort';
 import { TransaksiService } from 'src/app/sevice/transaksi.service';
 import { DetailMenuBottomSheetComponent } from 'src/app/dialog/detail-menu-bottom-sheet/detail-menu-bottom-sheet.component';
-import { Timestamp } from 'rxjs';
 
 @Component({
   selector: 'app-kasir',
@@ -17,6 +16,9 @@ export class KasirComponent implements OnInit {
   listTransaksi = new Array<Transaksi>();
   columsDisplay: string[] = ['id', 'pelanggan', 'kasir', 'tanggal', 'total', 'detail'];
   dataSource = new MatTableDataSource<Transaksi>();
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private transaksiService: TransaksiService, private bottomSheet: MatBottomSheet) { }
 
@@ -30,6 +32,7 @@ export class KasirComponent implements OnInit {
       });
       this.listTransaksi = this.tmp;
       this.dataSource = new MatTableDataSource<Transaksi>(this.listTransaksi);
+      this.dataSource.sort = this.sort;
     });
   }
 
@@ -51,5 +54,8 @@ export class KasirComponent implements OnInit {
 
   search(event: string) {
     this.dataSource.filter = event.trim().toLowerCase();
+  }
+  destroySession(key) {
+    sessionStorage.removeItem(key);
   }
 }

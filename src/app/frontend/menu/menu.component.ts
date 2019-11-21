@@ -17,7 +17,7 @@ export class MenuComponent implements OnInit {
   menu: any;
   items = new Array();
 
-  constructor(private menuService: MenuService, private transaksiService: TransaksiService,public snackBar: MatSnackBar ) { }
+  constructor(private menuService: MenuService, private transaksiService: TransaksiService, public snackBar: MatSnackBar ) { }
 
   ngOnInit() {
     this.menuService.getMenus().subscribe( res => {

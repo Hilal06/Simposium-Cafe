@@ -25,8 +25,8 @@ const routes: Routes = [
   {path: 'contact-form', component: ContactFormComponent},
   {path: 'admin-kasir', component: AdminKasirComponent},
   {path: 'admin-koki', component: AdminKokiComponent},
-  {path: 'admin', component: AdminComponent, canActivate : [AuthGuard]},
-  {path: 'koki', component:KokiComponent}
+  {path: 'admin', component: AdminComponent},
+  {path: 'koki', component: KokiComponent}
 ];
 
 @NgModule({

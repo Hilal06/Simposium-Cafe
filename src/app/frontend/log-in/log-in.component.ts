@@ -1,8 +1,8 @@
+import { CryptoService } from './../../service/crypto.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, NgForm, FormGroupDirective, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, Validators, NgForm, FormGroupDirective} from '@angular/forms';
 import { ErrorStateMatcher } from "@angular/material/core";
 import { Router } from "@angular/router";
-import { Login } from "../interfaces/login";
 import { AuthService } from "../services/auth.service";
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -18,61 +18,94 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./log-in.component.css']
 })
 export class LogInComponent implements OnInit {
-  lastIndex = 1;
-  mathcer = new MyErrorStateMatcher()
-  users: any = [];
-  hide = true;
-  model : Login = { userid: "admin", password: "admin"};
-  admin: FormGroup;
-  returnUrl : string
-  message : string;
+  listAdmin;
+  listKasir;
 
   pelanggan = new FormGroup ({
     nama : new FormControl('', [Validators.required])
   });
 
   kasir = new FormGroup ({
-    username : new FormControl('', [Validators.required]),
-    password : new FormControl('', [Validators.required]),
+    usernameKasir : new FormControl('', [Validators.required]),
+    passwordKasir : new FormControl('', [Validators.required]),
   });
 
-  // admin = new FormGroup ({
-  //   username : new FormControl('', [Validators.required]),
-  //   password : new FormControl('', [Validators.required])
-  // });
-
-  dataPelanggan = new FormGroup({
-    nama: new FormControl('', [Validators.required])
+  admin = new FormGroup ({
+    userid : new FormControl('', [Validators.required]),
+    password : new FormControl('', [Validators.required])
   });
 
-  constructor(private formBuilder : FormBuilder, private router : Router, private authService : AuthService) { }
+  constructor(private router: Router, private authService: AuthService, private crypto: CryptoService) { }
   ngOnInit() {
-    this.admin = this.formBuilder.group({
-      userid: ['', Validators.required],
-      password: ['', Validators.required]
+
+    this.authService.getAdmin().subscribe(res => {
+      this.listAdmin = res.map(res => {
+        return {
+          'id': res.payload.doc.id,
+          ... res.payload.doc.data()
+        };
+      });
     });
-    this.returnUrl = '/admin';
-    this.authService.logout();
+
+    this.authService.getKasirUser().subscribe(res => {
+      this.listKasir = res.map(res => {
+        return {
+          'id': res.payload.doc.id,
+          ... res.payload.doc.data()
+        };
+      });
+      console.log(this.listKasir);
+    });
   }
 
-  get f() { return this.admin.controls; }
-
-  login() {
-    if (this.admin.invalid) {
-      return;
+  loginAccount(key) {
+    let tmp = [];
+    let username;
+    let password;
+    switch (key) {
+      case 'Admin': tmp = [
+                            {username: 'rifaul', password: this.crypto.set('rifaul', 'rifaul')},
+                            {username: 'admin', password: this.crypto.set('admin', 'admin')}
+                          ];
+                    username = this.admin.get('userid').value;
+                    password = this.admin.get('password').value;
+                    break;
+      case 'Kasir': tmp = this.listKasir;
+                    username = this.kasir.get('usernameKasir').value;
+                    password = this.kasir.get('passwordKasir').value;
+                    break;
+      default: console.log('login failed !!'); break;
     }
-    else {
-      if (this.f.userid.value == this.model.userid && this.f.password.value == this.model.password) {
-        console.log("Login berhasil");
-        localStorage.setItem('isLoggedIn', "true");
-        localStorage.setItem('token', this.f.userid.value);
-        this.router.navigate([this.returnUrl]);
+    let success = false;
+    tmp.forEach(item => {
+      const dec = this.crypto.get(item.username, item.password);
+      if (password === dec && username === item.username) {
+        success = true;
       }
-      else {
-        this.message = "Cek kembali user dan password Anda";
+    });
+    if (success) {
+      if (key === 'Admin') {
+        this.router.navigateByUrl('admin').then(res => {
+          if (res) {
+            sessionStorage.setItem('Admin', this.crypto.set(username, password));
+          } else {
+            console.log('failed');
+          }
+        });
+      } else if (key === 'Kasir') {
+        this.router.navigateByUrl('kasir').then(res => {
+          if (res) {
+            sessionStorage.setItem('Kasir', this.crypto.set(username, password));
+          } else {
+            console.log('failed');
+          }
+        });
       }
+    } else {
+      console.log('user not found');
     }
   }
+
   orderPelanggan() {
     localStorage.setItem('Pelanggan', this.pelanggan.get('nama').value);
   }

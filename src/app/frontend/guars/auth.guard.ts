@@ -7,10 +7,6 @@ import { Observable } from 'rxjs';
 })
 export class AuthGuard implements CanActivate {
   constructor(private router: Router) {}
-  
-  /**
-   * isLoggedIn
- : boolean  */
   public isLoggedIn(): boolean {
     let status = false;
     if(localStorage.getItem('isLoggedIn') == "true") {
