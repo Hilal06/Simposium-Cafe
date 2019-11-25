@@ -28,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from "./frontend/guars/auth.guard";
 import { DetailMenuBottomSheetComponent } from './dialog/detail-menu-bottom-sheet/detail-menu-bottom-sheet.component';
 import { KokiComponent } from './frontend/koki/koki.component';
+import { WaitingPageComponent } from './frontend/waiting-page/waiting-page.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { KokiComponent } from './frontend/koki/koki.component';
     KasirComponent,
     DetailMenuBottomSheetComponent,
     KokiComponent,
+    WaitingPageComponent,
   ],
   imports: [
     HttpClientModule,

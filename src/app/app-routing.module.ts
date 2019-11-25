@@ -13,6 +13,7 @@ import { AdminComponent } from "./frontend/admin/admin.component";
 import { AdminKokiComponent } from "./frontend/admin-koki/admin-koki.component";
 import { AuthGuard } from './frontend/guars/auth.guard';
 import { KokiComponent } from './frontend/koki/koki.component';
+import { WaitingPageComponent } from "./frontend/waiting-page/waiting-page.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -26,7 +27,8 @@ const routes: Routes = [
   {path: 'admin-kasir', component: AdminKasirComponent},
   {path: 'admin-koki', component: AdminKokiComponent},
   {path: 'admin', component: AdminComponent},
-  {path: 'koki', component: KokiComponent}
+  {path: 'koki', component: KokiComponent},
+  {path: 'waiting', component:WaitingPageComponent}
 ];
 
 @NgModule({
