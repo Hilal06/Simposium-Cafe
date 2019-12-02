@@ -1,3 +1,4 @@
+import { AuthService } from './frontend/services/auth.service';
 import { KasirComponent} from './frontend/kasir/kasir.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire';
@@ -62,10 +63,10 @@ import { KokiComponent } from './frontend/koki/koki.component';
     AngularFirestoreModule,
     AngularFireStorageModule,
   ],
-  entryComponents:[
+  entryComponents: [
     DetailMenuBottomSheetComponent,
   ],
-  schemas:[
+  schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
     NO_ERRORS_SCHEMA
   ],

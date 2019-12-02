@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AuthGuard } from './../guars/auth.guard';
 
 import { Injectable } from '@angular/core';
 import { firestore } from 'firebase';
@@ -9,7 +11,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class AuthService {
   login = false;
 
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private firestore: AngularFirestore, private router: Router) {}
   getAdmin() {
     return this.firestore.collection('Admin').snapshotChanges();
   }
@@ -17,15 +19,17 @@ export class AuthService {
     return this.firestore.collection('Kasir').snapshotChanges();
   }
   isLogin() {
-    if (sessionStorage.length !== 0) {
-      this.login = true;
-    }
-    return this.login;
+    return (localStorage.length !== 0) ? true : false;
   }
   logout() {
     if (this.isLogin()) {
       sessionStorage.clear();
+      localStorage.clear();
       this.login = false;
     }
+  }
+
+  rulePelanggan() {
+    this.router.navigate(['/menu']);
   }
 }

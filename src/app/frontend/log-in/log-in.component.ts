@@ -54,7 +54,6 @@ export class LogInComponent implements OnInit {
           ... res.payload.doc.data()
         };
       });
-      console.log(this.listKasir);
     });
   }
 
@@ -108,5 +107,8 @@ export class LogInComponent implements OnInit {
 
   orderPelanggan() {
     localStorage.setItem('Pelanggan', this.pelanggan.get('nama').value);
+    if (this.authService.isLogin()) {
+      this.authService.rulePelanggan();
+    }
   }
 }

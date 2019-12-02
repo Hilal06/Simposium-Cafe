@@ -14,7 +14,7 @@
             </mat-form-field>
           </p>
           <div class="button">
-            <button mat-raised-button color="accent" routerLink="/menu" [disabled]="pelanggan.invalid" (click)="orderPelanggan()">Pesan</button>
+            <button mat-raised-button color="accent" [disabled]="pelanggan.invalid" (click)="orderPelanggan()" routerLinkActive="active" >Pesan</button>
           </div> 
         </form>
       </mat-card-content>
