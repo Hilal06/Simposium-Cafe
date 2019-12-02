@@ -29,13 +29,10 @@ export class NavbarComponent implements OnInit {
     const value = sessionStorage.getItem('Kasir');
     return (value === null) ? false : true;
   }
-  logout() {
-    if (this.auth.isLogin()) {
-      
+  logOut() {
+    if (localStorage.length !== 0) {
+      localStorage.clear()
+      this.router.navigate(['/home']);
     }
-    const item = ['Admin', 'Pelanggan', 'Kasir'];
-    item.forEach( i => {
-      sessionStorage.removeItem(i);
-    });
   }
 }
