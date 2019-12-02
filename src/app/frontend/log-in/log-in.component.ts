@@ -1,9 +1,12 @@
+import { Kasir } from './../../model/Kasir';
 import { CryptoService } from './../../service/crypto.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, NgForm, FormGroupDirective} from '@angular/forms';
 import { ErrorStateMatcher } from "@angular/material/core";
 import { Router } from "@angular/router";
 import { AuthService } from "../services/auth.service";
+import * as CryptoJS from 'crypto-js';
+
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective |
@@ -18,8 +21,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./log-in.component.css']
 })
 export class LogInComponent implements OnInit {
-  listAdmin;
-  listKasir;
+  listKasir = new Array<Kasir>();
 
   pelanggan = new FormGroup ({
     nama : new FormControl('', [Validators.required])
@@ -35,73 +37,55 @@ export class LogInComponent implements OnInit {
     password : new FormControl('', [Validators.required])
   });
 
-  constructor(private router: Router, private authService: AuthService, private crypto: CryptoService) { }
+  constructor(private authService: AuthService) { }
   ngOnInit() {
-
-    this.authService.getAdmin().subscribe(res => {
-      this.listAdmin = res.map(res => {
-        return {
-          'id': res.payload.doc.id,
-          ... res.payload.doc.data()
-        };
-      });
-    });
-
     this.authService.getKasirUser().subscribe(res => {
-      this.listKasir = res.map(res => {
-        return {
+      res.map(res => {
+        this.listKasir.push({
           'id': res.payload.doc.id,
-          ... res.payload.doc.data()
-        };
+          ...res.payload.doc.data()
+        } as Kasir);
       });
     });
   }
 
-  loginAccount(key) {
-    let tmp = [];
-    let username;
-    let password;
-    switch (key) {
-      case 'Admin': tmp = [
-                            {username: 'rifaul', password: this.crypto.set('rifaul', 'rifaul')},
-                            {username: 'admin', password: this.crypto.set('admin', 'admin')}
-                          ];
-                    username = this.admin.get('userid').value;
-                    password = this.admin.get('password').value;
-                    break;
-      case 'Kasir': tmp = this.listKasir;
-                    username = this.kasir.get('usernameKasir').value;
-                    password = this.kasir.get('passwordKasir').value;
-                    break;
-      default: console.log('login failed !!'); break;
-    }
-    let success = false;
-    tmp.forEach(item => {
-      const dec = this.crypto.get(item.username, item.password);
-      if (password === dec && username === item.username) {
-        success = true;
+  loginAdmin() {
+    let found = false;
+    const inUser = this.admin.get('userid').value;
+    const inPass = this.admin.get('password').value;
+
+    const data = [{username: 'admin', password: CryptoJS.AES.encrypt('admin', 'Area51').toString()},
+                {username: 'rifaul', password: CryptoJS.AES.encrypt('rifaul', 'Area51').toString()}];
+    data.forEach(user => {
+      let decrypted = CryptoJS.AES.decrypt(user.password, 'Area51').toString(CryptoJS.enc.Utf8);
+      if (user.username === inUser && decrypted === inPass) {
+        found = true;
       }
     });
-    if (success) {
-      if (key === 'Admin') {
-        this.router.navigateByUrl('admin').then(res => {
-          if (res) {
-            sessionStorage.setItem('Admin', this.crypto.set(username, password));
-          } else {
-            console.log('failed');
-          }
-        });
-      } else if (key === 'Kasir') {
-        this.router.navigateByUrl('kasir').then(res => {
-          if (res) {
-            sessionStorage.setItem('Kasir', this.crypto.set(username, password));
-          } else {
-            console.log('failed');
-          }
-        });
+    if (found) {
+      localStorage.setItem('Admin', CryptoJS.AES.encrypt(inUser, 'Area51').toString());
+      this.authService.ruleAdmin();
+    }
+  }
+
+  loginKasir() {
+    const inUser = this.kasir.get('usernameKasir').value;
+    const inPass = this.kasir.get('passwordKasir').value;
+    let dec;
+    let found = false;
+    let curUser: Kasir;
+    this.listKasir.forEach(user => {
+      dec = CryptoJS.AES.decrypt(user.password, user.username).toString(CryptoJS.enc.Utf8)
+      if (dec === inPass && inUser === user.username) {
+        found = true;
+        curUser = user;
       }
+    });
+    if (found) {
+      localStorage.setItem('Kasir', CryptoJS.AES.encrypt(curUser.nama, 'Kasirnya').toString());
+      this.authService.ruleKasir();
     } else {
-      console.log('user not found');
+      console.log('Kasir Not Found');
     }
   }
 

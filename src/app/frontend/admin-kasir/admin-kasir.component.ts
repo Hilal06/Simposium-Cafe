@@ -4,7 +4,8 @@ import { Kasir } from './../../model/Kasir';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { MatSort } from '@angular/material/sort';
 import { FormGroup, FormControl } from '@angular/forms';
-import { CryptoService } from "./../../service/crypto.service";
+// import { CryptoService } from "./../../service/crypto.service";
+import * as CryptoJS from 'crypto-js';  
 @Component({
   selector: 'app-admin-kasir',
   templateUrl: './admin-kasir.component.html',
@@ -15,7 +16,7 @@ export class AdminKasirComponent implements OnInit {
   kasirr = new Array<Kasir>();
   columsDisplay: string[] = ['nama', 'username', 'password', 'action'];
   dataSource = new MatTableDataSource<Kasir>();
-  
+
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -24,7 +25,7 @@ export class AdminKasirComponent implements OnInit {
     username:new FormControl(''),
     password: new FormControl(''),
   });
-  constructor(private KasirService: KasirService, private EncrDecr: CryptoService) { }
+  constructor(private KasirService: KasirService) { }
 
   ngOnInit() {
     this.KasirService.getKasir().subscribe(res => {
@@ -43,8 +44,10 @@ export class AdminKasirComponent implements OnInit {
   saveKasir() {
     const nama = this.kasirForm.get('nama').value;
     const username = this.kasirForm.get('username').value;
-    const password = this.EncrDecr.set(username, this.kasirForm.get('password').value);
-    let iniKasir: Kasir = {'id': null, 'nama': nama, 'username': username, 'password': password};
+    const password = this.kasirForm.get('password').value;
+    const encrypt = CryptoJS.AES.encrypt(password, username).toString();
+
+    let iniKasir: Kasir = {'id': null, 'nama': nama, 'username': username, 'password': encrypt};
     this.KasirService.addKasir(iniKasir);
     this.dataSource = new MatTableDataSource<Kasir>(this.kasirr);
     this.dataSource.sort = this.sort;
@@ -59,5 +62,4 @@ export class AdminKasirComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-  
 }

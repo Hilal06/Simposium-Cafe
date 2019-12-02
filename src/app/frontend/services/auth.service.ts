@@ -1,8 +1,6 @@
 import { Router } from '@angular/router';
-import { AuthGuard } from './../guars/auth.guard';
 
 import { Injectable } from '@angular/core';
-import { firestore } from 'firebase';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
@@ -31,5 +29,19 @@ export class AuthService {
 
   rulePelanggan() {
     this.router.navigate(['/menu']);
+  }
+  ruleAdmin() {
+    if (localStorage.getItem('Admin') !== null) {
+      this.router.navigate(['/admin']);
+    } else {
+      console.log('Session Not Admin');
+    }
+  }
+  ruleKasir() {
+    if (localStorage.getItem('Kasir') !== null) {
+      this.router.navigate(['/kasir']);
+    } else {
+      console.log('Session Not Kasir');
+    }
   }
 }

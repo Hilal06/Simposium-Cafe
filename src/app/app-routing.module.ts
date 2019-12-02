@@ -1,7 +1,7 @@
 import { AuthService } from './frontend/services/auth.service';
 import { KasirComponent } from './frontend/kasir/kasir.component';
 import { NgModule, Component } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { LogInComponent } from './frontend/log-in/log-in.component';
 import { RegisterComponent } from './frontend/register/register.component';
 import { MenuComponent } from './frontend/menu/menu.component';

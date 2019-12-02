@@ -37,7 +37,7 @@
             </mat-form-field>
           </p>
           <div class="button">
-            <button mat-raised-button color="accent" (click)="loginAccount('Kasir')" [disabled]="kasir.invalid">Masuk</button>
+            <button mat-raised-button color="accent" (click)="loginKasir()" [disabled]="kasir.invalid">Masuk</button>
           </div>
         </form>
       </mat-card-content>
@@ -59,7 +59,7 @@
             </mat-form-field>
           </p>
           <div class="button">
-              <button mat-raised-button color="accent" (click)="loginAccount('Admin')" [disabled]="admin.invalid" >Masuk</button>
+              <button mat-raised-button color="accent" (click)="loginAdmin()" [disabled]="admin.invalid" >Masuk</button>
           </div>
         </form>
       </mat-card-content>

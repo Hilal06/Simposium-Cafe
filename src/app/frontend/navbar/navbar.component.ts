@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
   }
 
   isPelanggan() {
-    const value = sessionStorage.getItem('Pelanggan');
+    const value = localStorage.getItem('Pelanggan');
     if (value === null) {
       return false;
     } else {
@@ -22,16 +22,16 @@ export class NavbarComponent implements OnInit {
     }
   }
   isAdmin() {
-    const value = sessionStorage.getItem('Admin');
+    const value = localStorage.getItem('Admin');
     return (value === null) ? false : true;
   }
   isKasir() {
-    const value = sessionStorage.getItem('Kasir');
+    const value = localStorage.getItem('Kasir');
     return (value === null) ? false : true;
   }
   logOut() {
     if (localStorage.length !== 0) {
-      localStorage.clear()
+      localStorage.clear();
       this.router.navigate(['/home']);
     }
   }
