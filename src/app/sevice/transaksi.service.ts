@@ -10,9 +10,7 @@ export class TransaksiService {
 
   constructor(private firestore: AngularFirestore) { }
   getTransaksi() {
-    const data = this.firestore.collection('Transaksi');
-    data.ref.orderBy('tanggal', 'desc');
-    return data.snapshotChanges();
+    return this.firestore.collection('Transaksi').snapshotChanges();
   }
 
   addTransaksi(record: Transaksi) {

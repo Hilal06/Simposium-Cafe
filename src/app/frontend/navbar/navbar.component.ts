@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
   constructor(private router: Router, private auth: AuthService) { }
 
   ngOnInit() {
@@ -34,5 +33,23 @@ export class NavbarComponent implements OnInit {
       localStorage.clear();
       this.router.navigate(['/home']);
     }
+  }
+  tourToMenu() {
+    if (this.isPelanggan()) {
+      this.router.navigate(['menu']);
+    }
+  }
+  tourToAdmin() {
+    if (this.isAdmin()) {
+      this.router.navigate(['admin']);
+    }
+  }
+  tourToKasir() {
+    if (this.isKasir()) {
+      this.router.navigate(['kasir']);
+    }
+  }
+  tourToKoki() {
+    this.router.navigate(['koki']);
   }
 }

@@ -14,7 +14,7 @@ import { DetailMenuBottomSheetComponent } from 'src/app/dialog/detail-menu-botto
 export class KasirComponent implements OnInit {
   tmp: Transaksi[];
   listTransaksi = new Array<Transaksi>();
-  columsDisplay: string[] = ['id', 'pelanggan', 'kasir', 'tanggal', 'total', 'detail'];
+  columsDisplay: string[] = ['id', 'pelanggan', 'tanggal', 'total', 'detail'];
   dataSource = new MatTableDataSource<Transaksi>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

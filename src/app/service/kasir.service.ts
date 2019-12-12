@@ -10,7 +10,7 @@ import { Key } from 'protractor';
 })
 export class KasirService {
 
-  constructor(private firestore : AngularFirestore) { }
+  constructor(private firestore: AngularFirestore) { }
   getKasir() {
     return this.firestore.collection('Kasir').snapshotChanges();
   }

@@ -40,10 +40,7 @@ export class MenuComponent implements OnInit {
   getTotalCost() {
     return this.items.map(t => +t.harga).reduce((acc, value) => acc + value, 0);
   }
-  pesan(message: string, action: string) {
-    this.snackBar.open(message, action, {
-      duration: 5000,
-   });
+  pesan() {
     // nama pelanggan set with session name pelanggan from login pelanggan
     const pelanggan = localStorage.getItem('Pelanggan');
     const menuOrder = this.items;

@@ -9,7 +9,11 @@
       <mat-icon>shopping_cart</mat-icon>
       <span>Pesanan</span>
     </button>
-    <button mat-button [disabled]="isKasir()">
+    <button mat-button *ngIf="isKasir()" (click)="tourToKoki()">
+      <mat-icon>restaurant_menu</mat-icon>
+      <span>Koki</span>
+    </button>
+    <button mat-button *ngIf="isKasir()" (click)="tourToKasir()">
       <mat-icon>lock</mat-icon>
       <span>Kasir</span>
     </button>
@@ -17,11 +21,11 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink='/menu' [disabled]="isPelanggan()">
+      <button mat-menu-item *ngIf="isPelanggan()" (click)="tourToPelanggan()">
         <mat-icon>fastfood</mat-icon>
         <span>Menu</span>
       </button>
-      <button mat-menu-item routerLink='/menu' [disabled]="isAdmin()">
+      <button mat-menu-item *ngIf="isAdmin()" (click)="tourToAdmin()">
         <mat-icon>fastfood</mat-icon>
         <span>Admin</span>
       </button>
