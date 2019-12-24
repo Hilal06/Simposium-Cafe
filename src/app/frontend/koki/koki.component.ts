@@ -1,3 +1,4 @@
+import { KokiService } from './../../service/koki.service';
 import { Kasir } from './../../model/Kasir';
 import { Component, OnInit, ViewChild} from '@angular/core';
 import { Transaksi } from './../../model/Transaksi';
@@ -18,21 +19,22 @@ import { mkdirSync } from 'fs';
 export class KokiComponent implements OnInit {
   tmp: Transaksi[];
   listTransaksi = new Array<Transaksi>();
-  columsDisplay: string[] = ['id', 'menu', 'tanggal'];
+  columsDisplay: string[] = ['id', 'menu', 'tanggal', 'status'];
   dataSource = new MatTableDataSource<Transaksi>();
 
-  constructor(private transaksiService: TransaksiService) { }
+  constructor(private transaksiService: TransaksiService, private kokiService: KokiService) { }
 
-  ngOnInit() {this.transaksiService.getTransaksi().subscribe(res => {
-    this.tmp = res.map( item => {
-      return {
-        'id': item.payload.doc.id,
-        ...item.payload.doc.data()
-      } as Transaksi;
+  ngOnInit() {
+    this.kokiService.getTodayOrder().then(res => {
+      this.tmp = res.docChanges().map(item => {
+        return {
+          'id': item.doc.id,
+          ...item.doc.data()
+        } as Transaksi;
+      });
+      this.listTransaksi = this.tmp;
+      this.dataSource = new MatTableDataSource<Transaksi>(this.listTransaksi);
     });
-    this.listTransaksi = this.tmp;
-    this.dataSource = new MatTableDataSource<Transaksi>(this.listTransaksi);
-  });
   }
   getDateOnly(time: firebase.firestore.Timestamp) {
     const date = time.toDate();
@@ -48,9 +50,20 @@ export class KokiComponent implements OnInit {
       if (mk === '') {
         mk = mk + element.Nama;
       } else {
-        mk = mk + ', ' + element.Nama
+        mk = mk + ', ' + element.Nama;
       }
-    })
+    });
     return mk;
+  }
+  orderDone(data) {
+    this.kokiService.statusChange(data);
+  }
+
+  getStatusMessage(data) {
+    if (data) {
+      return 'Complete';
+    } else {
+      return 'Process';
+    }
   }
 }

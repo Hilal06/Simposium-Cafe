@@ -49,7 +49,7 @@ export class MenuComponent implements OnInit {
       console.log('data empty');
     } else {
       // tslint:disable-next-line: max-line-length
-      const transaksi: Transaksi = {'id': '1', 'pelanggan': pelanggan ,'menu': menuOrder, 'kasir': kasir, 'tanggal':null, 'total': this.getTotalCost()};
+      const transaksi: Transaksi = {'id': '1', 'pelanggan': pelanggan ,'menu': menuOrder, 'kasir': kasir, 'tanggal':null, 'total': this.getTotalCost(), 'status': false};
       this.transaksiService.addTransaksi(transaksi);
     }
   }

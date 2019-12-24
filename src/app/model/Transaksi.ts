@@ -7,4 +7,5 @@ export interface Transaksi {
     menu: Menu[];
     tanggal: any;
     total: number;
+    status: boolean;
 }
